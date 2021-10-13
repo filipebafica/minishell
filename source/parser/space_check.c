@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   input_space_handler.c                              :+:      :+:    :+:   */
+/*   space_check.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 15:45:03 by fbafica           #+#    #+#             */
-/*   Updated: 2021/10/12 00:27:38 by fbafica          ###   ########.fr       */
+/*   Updated: 2021/10/12 15:30:10 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static void	add_space(char **input, int index)
 	*input = ft_strjoin(frst_half, scnd_half);
 }
 
-void	space_charac_check(char **input)
+void	space_check(char **input)
 {
 	char	*set;
 	int		i;
@@ -44,7 +44,7 @@ void	space_charac_check(char **input)
 			{
 				add_space(input, i);
 				++i;
-				input_space_handler(input);
+				space_check(input);
 			}
 			++j;
 		}
