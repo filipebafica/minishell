@@ -1,28 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   hash_function.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/08 14:49:23 by fbafica           #+#    #+#             */
-/*   Updated: 2021/10/13 20:11:23 by fbafica          ###   ########.fr       */
+/*   Created: 2021/10/15 15:38:39 by fbafica           #+#    #+#             */
+/*   Updated: 2021/10/15 16:32:56 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-#include <sys/types.h>
-#include <unistd.h>
 
-int	main(void)
+unsigned long int	hash_a_key(char *key, unsigned int table_size)
 {
-	char	*input_command;
+	unsigned long int	hash;
+	int					i;
 
-	while (1)
+	hash = 5381;
+	i = 0;
+	while (key && key[i])
 	{
-		input_command = readline("$");
-		input_handler(&input_command);
-		printf("%s\n", input_command);
+		hash = ((hash << 5) + hash) + key[i];
+		++i;
 	}
-	return (0);
+	return (hash % table_size);
 }

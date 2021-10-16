@@ -6,7 +6,7 @@
 #    By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/08 14:36:44 by fbafica           #+#    #+#              #
-#    Updated: 2021/10/13 17:02:07 by fbafica          ###   ########.fr        #
+#    Updated: 2021/10/15 19:39:49 by fbafica          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ LIBFT = ./libft/libft.a
 INCLUDE_PATH = ./includes/
 FLAGS = -g -fsanitize=address -Wall -Wextra -Werror -lreadline
 SOURCE_CODE = ./source/main.c ./source/parser/input_handler.c ./source/parser/space_handler.c \
-			./source/parser/quotes_handler.c
+			./source/parser/quotes_handler.c ./source/hashtable/hash_function.c ./source/hashtable/hash_table.c
 
 CC = gcc
 
