@@ -12,11 +12,11 @@
 
 #include "minishell.h"
 
-void	free_node(t_node *node)
+void	free_pair(t_pair *pair)
 {
-	free(node->key);
-	free(node->value);
-	free(node);
+	free(pair->key);
+	free(pair->value);
+	free(pair);
 }
 
 void	free_table(t_table *table)
@@ -26,33 +26,31 @@ void	free_table(t_table *table)
 	i = 0;
 	while (i < table->size)
 	{
-		if (table->data[i] != NULL)
-			free_history_entry(table->data[i]);
+		if (table->pairs[i] != NULL)
+			free_pair(table->pairs[i]);
+		++i;
 	}
-	free(table->data);
+	free(table->pairs);
 	free(table);
 }
 
-t_node	*create_node(char *key, char *value, \
-int key_size, int value_size)
+t_pair	*create_pair(char *key, char *value)
 {
-	t_node	*node;
+	t_pair	*pair;
 
-	node = malloc(sizeof(t_node));
-	node->key = malloc(key_size);
-	node->value = malloc(value_size);
-	ft_strlcpy(node->key, key, key_size);
-	ft_strlcpy(node->key, value, value_size);
-	return (node);
+	pair = ft_calloc(1, sizeof(t_pair));
+	pair->key = ft_strdup(key);
+	pair->value = ft_strdup(value);
+	return (pair);
 }
 
 t_table	*create_table(int size)
 {
 	t_table	*table;
 
-	table = malloc(sizeof(t_table));
+	table = ft_calloc(1, sizeof(t_table));
 	table->size = size;
 	table->count = 0;
-	table->data = ft_calloc(size, sizeof(t_node *));
+	table->pairs = ft_calloc(size, sizeof(t_pair));
 	return (table);
 }
