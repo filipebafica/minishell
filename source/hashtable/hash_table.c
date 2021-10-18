@@ -12,28 +12,6 @@
 
 #include "minishell.h"
 
-void	free_pair(t_pair *pair)
-{
-	free(pair->key);
-	free(pair->value);
-	free(pair);
-}
-
-void	free_table(t_table *table)
-{
-	int	i;
-
-	i = 0;
-	while (i < table->size)
-	{
-		if (table->pairs[i] != NULL)
-			free_pair(table->pairs[i]);
-		++i;
-	}
-	free(table->pairs);
-	free(table);
-}
-
 t_pair	*create_pair(char *key, char *value)
 {
 	t_pair	*pair;
@@ -41,6 +19,7 @@ t_pair	*create_pair(char *key, char *value)
 	pair = ft_calloc(1, sizeof(t_pair));
 	pair->key = ft_strdup(key);
 	pair->value = ft_strdup(value);
+	pair->next = NULL;
 	return (pair);
 }
 

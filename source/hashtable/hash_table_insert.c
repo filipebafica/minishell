@@ -6,24 +6,24 @@
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/15 20:48:06 by fbafica           #+#    #+#             */
-/*   Updated: 2021/10/17 13:12:26 by fbafica          ###   ########.fr       */
+/*   Updated: 2021/10/18 18:20:58 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-static void	non_empty_index(t_pair *curr, t_pair *new)
+static void	non_empty_index(t_table *table, t_pair *curr, \
+t_pair *new, int index)
 {
 	if (ft_strncmp(curr->key, new->key, ft_strlen(new->key)) == 0)
 	{
-		ft_strlcpy(curr->value, new->value, ft_strlen(new->value) + 1);
-		free_pair(new);
-		return ;
+		free_pair(curr);
+		table->pairs[index] = new;
 	}
 	else
 	{
-		printf("handle_colision(table, new);\n");
-		return ;
+		table->pairs[index] = new;
+		new->next = curr;
 	}
 }
 
@@ -39,7 +39,7 @@ static void	empty_index(t_table *table, t_pair *new, int index)
 	table->count++;
 }
 
-void	table_insert(t_table *table, char *key, char *value)
+void	table_insert_pair(t_table *table, char *key, char *value)
 {
 	t_pair	*curr;
 	t_pair	*new;
@@ -51,5 +51,5 @@ void	table_insert(t_table *table, char *key, char *value)
 	if (!curr)
 		empty_index(table, new, index);
 	else
-		non_empty_index(curr, new);
+		non_empty_index(table, curr, new, index);
 }
