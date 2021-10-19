@@ -6,7 +6,7 @@
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/08 14:49:23 by fbafica           #+#    #+#             */
-/*   Updated: 2021/10/18 19:51:35 by fbafica          ###   ########.fr       */
+/*   Updated: 2021/10/18 22:11:04 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	main(void)
 	print_search(hash_table, "Hel");
 	print_search(hash_table, "Cau");
 	table_delete_pair(hash_table, "Hel");
-	print_search(hash_table, "Gfl");
+	print_search(hash_table, "Hel");
 	print_table(hash_table);
 	free_table(hash_table);
 	return (0);
