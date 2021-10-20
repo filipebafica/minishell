@@ -6,20 +6,11 @@
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 15:22:46 by fbafica           #+#    #+#             */
-/*   Updated: 2021/10/13 17:05:11 by fbafica          ###   ########.fr       */
+/*   Updated: 2021/10/20 17:43:18 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-
-static void	fill_between_quotes(int *sing, int *doub, char *c)
-{
-	if (*sing > 0 || *doub > 0)
-	{
-		if (*c == ' ')
-			*c = '-';
-	}
-}
 
 static void	is_cloded(int *sing, int *doub, char *who_first)
 {
@@ -57,7 +48,7 @@ static void	is_quote(int *sing, int *doub, char *who_first, char c)
 	}
 }
 
-int	quotes_handler(char **input)
+int	quotes_handler(char *input)
 {
 	int		sing;
 	int		doub;
@@ -68,11 +59,10 @@ int	quotes_handler(char **input)
 	doub = 0;
 	who_first = '-';
 	i = 0;
-	while ((*input)[i] != '\0')
+	while (input[i] != '\0')
 	{
-		is_quote(&sing, &doub, &who_first, (*input)[i]);
+		is_quote(&sing, &doub, &who_first, input[i]);
 		is_cloded(&sing, &doub, &who_first);
-		fill_between_quotes(&sing, &doub, &(*input)[i]);
 		++i;
 	}
 	if (sing + doub != 0)

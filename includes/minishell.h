@@ -6,7 +6,7 @@
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/08 14:49:38 by fbafica           #+#    #+#             */
-/*   Updated: 2021/10/18 18:20:11 by fbafica          ###   ########.fr       */
+/*   Updated: 2021/10/20 17:37:47 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,9 @@ typedef struct s_table
 	int		size;
 }	t_table;
 
-void				input_handler(char **input);
-void				space_handler(char **input);
-int					quotes_handler(char **input);
+void				input_handler(char *input);
+void				space_handler(char *input);
+int					quotes_handler(char *input);
 unsigned long int	hash_a_key(char *key, unsigned int table_size);
 t_table				*create_table(int size);
 t_pair				*create_pair(char *key, char *value);
@@ -46,5 +46,6 @@ void				table_delete_pair(t_table *table, char *key);
 char				*search_a_key(t_table *table, char *key);
 void				print_search(t_table *table, char *key);
 void				print_table(t_table *table);
+char				**split_but_quotes(char *s);
 
 #endif
