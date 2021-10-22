@@ -6,33 +6,30 @@
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 14:46:30 by fbafica           #+#    #+#             */
-/*   Updated: 2021/10/20 17:40:47 by fbafica          ###   ########.fr       */
+/*   Updated: 2021/10/21 23:42:34 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	input_handler(char *input)
+void	input_handler(char *input, t_command **head)
 {
-	char **splited_input;
-	int i;
+	char	**tokens;
+	int		i;
 
 	if(quotes_handler(input) == 1)
 	{
 		space_handler(input);
-		splited_input = split_but_quotes(input);
+		tokens = split_but_quotes(input);
+		feed_commands(head, tokens, tokens_len(tokens) - 1);
 		i = 0;
-		while(splited_input[i] != (char *)'\0')
+		while (tokens[i] != (char *)'\0')
 		{
-			printf("%s\n", splited_input[i]);
+			free(tokens[i]);
 			++i;
 		}
-		i = 0;
-		while (splited_input[i] != (char *)'\0')
-		{
-			free(splited_input[i]);
-			++i;
-		}
-		free(splited_input);
+		free(tokens);
 	}
+	else
+		printf("bad syntax\n");
 }

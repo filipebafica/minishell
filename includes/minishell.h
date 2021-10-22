@@ -6,7 +6,7 @@
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/08 14:49:38 by fbafica           #+#    #+#             */
-/*   Updated: 2021/10/20 17:37:47 by fbafica          ###   ########.fr       */
+/*   Updated: 2021/10/21 23:23:30 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,18 @@ typedef struct s_table
 	int		size;
 }	t_table;
 
-void				input_handler(char *input);
+typedef struct s_command
+{
+	char				*command;
+	struct s_command	*next;
+}	t_command;
+
+typedef struct s_commands
+{
+	t_command	*head;
+} t_commands;
+
+void				input_handler(char *input, t_command **head);
 void				space_handler(char *input);
 int					quotes_handler(char *input);
 unsigned long int	hash_a_key(char *key, unsigned int table_size);
@@ -47,5 +58,6 @@ char				*search_a_key(t_table *table, char *key);
 void				print_search(t_table *table, char *key);
 void				print_table(t_table *table);
 char				**split_but_quotes(char *s);
-
+int					tokens_len(char **tokens);
+void 				feed_commands(t_command **head, char **tokens, int num_tokens);
 #endif

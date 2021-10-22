@@ -5,7 +5,8 @@
             "includePath": [
                 "${default}",
                 "${workspaceFolder}/libft/includes",
-                "${workspaceFolder}/includes"
+                "${workspaceFolder}/includes",
+                "${workspaceFolder}"
             ],
             "compilerPath": "/usr/bin/clang",
             "cStandard": "c11",

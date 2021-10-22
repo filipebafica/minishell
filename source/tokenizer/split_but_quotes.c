@@ -6,7 +6,7 @@
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/19 13:36:21 by fbafica           #+#    #+#             */
-/*   Updated: 2021/10/20 17:26:57 by fbafica          ###   ########.fr       */
+/*   Updated: 2021/10/21 23:16:06 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static void	check_quotes(char *s, int *end)
 	}
 }
 
-static void	split_str(char *s, char **splited, int tokens)
+static void	split_str(char *s, char **splited, int num_tokens)
 {
 	int		i;
 	int		start;
@@ -41,7 +41,7 @@ static void	split_str(char *s, char **splited, int tokens)
 	start = 0;
 	end = 0;
 	i = 0;
-	while (i < tokens)
+	while (i < num_tokens)
 	{
 		adjust_start_end(s, &start, &end);
 		check_quotes(s, &end);
@@ -53,15 +53,15 @@ static void	split_str(char *s, char **splited, int tokens)
 		}
 		end++;
 	}
-	splited[tokens] = (char *) '\0';
+	splited[num_tokens] = (char *) '\0';
 }
 
-static int	get_tokens(char *s)
+static int	get_num_tokens(char *s)
 {
-	int		tokens;
+	int		num_tokens;
 	char	who_opened;
 
-	tokens = 0;
+	num_tokens = 0;
 	while (*s)
 	{
 		if (*s == '"' || *s == "'"[0])
@@ -71,19 +71,19 @@ static int	get_tokens(char *s)
 				;
 		}
 		if ((*s != ' ' && *(s + 1) == ' ') || (*s != ' ' && *(s + 1) == '\0'))
-			tokens++;
+			num_tokens++;
 		s++;
 	}
-	return (tokens);
+	return (num_tokens);
 }
 
 char	**split_but_quotes(char *s)
 {
-	int		tokens;
+	int		num_tokens;
 	char	**splited;
 
-	tokens = get_tokens(s);
-	splited = malloc(sizeof(char *) * (tokens + 1));
-	split_str(s, splited, tokens);
+	num_tokens = get_num_tokens(s);
+	splited = malloc(sizeof(char *) * (num_tokens + 1));
+	split_str(s, splited, num_tokens);
 	return (splited);
 }
