@@ -6,7 +6,7 @@
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/08 14:49:23 by fbafica           #+#    #+#             */
-/*   Updated: 2021/10/21 23:43:57 by fbafica          ###   ########.fr       */
+/*   Updated: 2021/10/21 23:51:53 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,10 @@
 
 int	main(void)
 {
-	t_commands	commands;
 
-	commands.head = NULL;
 	while (1)
 	{
-		input_handler(readline("$"), &commands.head);
+		input_handler(readline("$"));
 	}
 	return (0);
 }

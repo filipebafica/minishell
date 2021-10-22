@@ -6,13 +6,13 @@
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 14:46:30 by fbafica           #+#    #+#             */
-/*   Updated: 2021/10/21 23:42:34 by fbafica          ###   ########.fr       */
+/*   Updated: 2021/10/21 23:54:59 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	input_handler(char *input, t_command **head)
+void	input_handler(char *input)
 {
 	char	**tokens;
 	int		i;
@@ -21,7 +21,12 @@ void	input_handler(char *input, t_command **head)
 	{
 		space_handler(input);
 		tokens = split_but_quotes(input);
-		feed_commands(head, tokens, tokens_len(tokens) - 1);
+		i = 0;
+		while (tokens[i] != (char *)'\0')
+		{
+			printf("%s\n", (tokens[i]));
+			++i;
+		}
 		i = 0;
 		while (tokens[i] != (char *)'\0')
 		{
