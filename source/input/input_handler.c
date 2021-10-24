@@ -1,22 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   input_handler.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/08 14:49:23 by fbafica           #+#    #+#             */
-/*   Updated: 2021/10/24 13:19:33 by fbafica          ###   ########.fr       */
+/*   Created: 2021/10/12 14:46:30 by fbafica           #+#    #+#             */
+/*   Updated: 2021/10/24 14:31:02 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	main(void)
+void	input_handler(char *input)
 {
-	while (1)
+	char	**tokens;
+
+	if (quotes_check(input) == 1)
 	{
-		input_handler(readline("$"));
+		space_handler(&input);
+		tokens = split_but_quotes(input);
+		add_history(input);
+		print_tokens(tokens);
+		free_tokens(tokens);
 	}
-	return (0);
+	else
+		printf("bad syntax\n");
 }

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   quotes_handler.c                                   :+:      :+:    :+:   */
+/*   quotes_check.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 15:22:46 by fbafica           #+#    #+#             */
-/*   Updated: 2021/10/20 17:43:18 by fbafica          ###   ########.fr       */
+/*   Updated: 2021/10/24 14:25:29 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ static void	is_quote(int *sing, int *doub, char *who_first, char c)
 	}
 }
 
-int	quotes_handler(char *input)
+int	quotes_check(char *input)
 {
 	int		sing;
 	int		doub;
