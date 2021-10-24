@@ -6,7 +6,7 @@
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/08 14:49:38 by fbafica           #+#    #+#             */
-/*   Updated: 2021/10/24 14:30:50 by fbafica          ###   ########.fr       */
+/*   Updated: 2021/10/24 19:03:47 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ typedef struct s_commands
 	t_command	*head;
 }	t_commands;
 
-void				input_handler(char *input);
+char				**input_handler(char *input);
 void				space_handler(char **input);
 int					quotes_check(char *input);
 unsigned long int	hash_a_key(char *key, unsigned int table_size);
@@ -57,7 +57,7 @@ void				table_delete_pair(t_table *table, char *key);
 char				*search_a_key(t_table *table, char *key);
 void				print_search(t_table *table, char *key);
 void				print_table(t_table *table);
-char				**split_but_quotes(char *s);
+char				**get_tokens(char *s);
 void				print_tokens(char **tokens);
 void				free_tokens(char **tokens);
 #endif

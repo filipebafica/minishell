@@ -6,7 +6,7 @@
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/19 13:36:21 by fbafica           #+#    #+#             */
-/*   Updated: 2021/10/21 23:16:06 by fbafica          ###   ########.fr       */
+/*   Updated: 2021/10/24 19:00:19 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static void	check_quotes(char *s, int *end)
 	}
 }
 
-static void	split_str(char *s, char **splited, int num_tokens)
+static void	split_str(char *s, char **tokens, int num_tokens)
 {
 	int		i;
 	int		start;
@@ -47,13 +47,13 @@ static void	split_str(char *s, char **splited, int num_tokens)
 		check_quotes(s, &end);
 		if (s[end] == ' ' || s[end] == '\0')
 		{
-			splited[i] = ft_substr(s, start, (end - start));
+			tokens[i] = ft_substr(s, start, (end - start));
 			start = end + 1;
 			++i;
 		}
 		end++;
 	}
-	splited[num_tokens] = (char *) '\0';
+	tokens[num_tokens] = (char *) '\0';
 }
 
 static int	get_num_tokens(char *s)
@@ -77,13 +77,13 @@ static int	get_num_tokens(char *s)
 	return (num_tokens);
 }
 
-char	**split_but_quotes(char *s)
+char	**get_tokens(char *s)
 {
 	int		num_tokens;
-	char	**splited;
+	char	**tokens;
 
 	num_tokens = get_num_tokens(s);
-	splited = malloc(sizeof(char *) * (num_tokens + 1));
-	split_str(s, splited, num_tokens);
-	return (splited);
+	tokens = malloc(sizeof(char *) * (num_tokens + 1));
+	split_str(s, tokens, num_tokens);
+	return (tokens);
 }
