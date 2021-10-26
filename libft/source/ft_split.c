@@ -6,14 +6,13 @@
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/20 15:27:23 by fbafica           #+#    #+#             */
-/*   Updated: 2021/06/21 01:08:57 by fbafica          ###   ########.fr       */
+/*   Updated: 2021/10/25 16:58:19 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include "libft.h"
 
-static	void	write(char c, char const *s, char ***array)
+static	void	fill(char c, char const *s, char ***array)
 {
 	int	i;
 	int	j;
@@ -110,7 +109,7 @@ char	**ft_split(char const *s, char c)
 	allocate(rows, columns, &array);
 	if (!array)
 		return (NULL);
-	write(c, s, &array);
+	fill(c, s, &array);
 	free(columns);
 	return (array);
 }

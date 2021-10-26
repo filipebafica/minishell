@@ -6,11 +6,10 @@
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/01 17:21:31 by fbafica           #+#    #+#             */
-/*   Updated: 2021/06/11 19:27:36 by fbafica          ###   ########.fr       */
+/*   Updated: 2021/10/25 16:53:48 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include "libft.h"
 
 int	ft_strncmp(const char *s1, const char *s2, size_t n)

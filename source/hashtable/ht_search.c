@@ -6,7 +6,7 @@
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 14:10:38 by fbafica           #+#    #+#             */
-/*   Updated: 2021/10/18 22:08:55 by fbafica          ###   ########.fr       */
+/*   Updated: 2021/10/25 17:45:30 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,12 @@ char	*search_a_key(t_table *table, char *key)
 	pair = table->pairs[index];
 	if (pair)
 	{
-		if (ft_strncmp(pair->key, key, ft_strlen(key)) == 0)
+		if (!ft_strcmp(pair->key, key))
 			return (pair->value);
 		else
 		{
 			tmp = pair;
-			while (tmp && (ft_strncmp(tmp->key, key, ft_strlen(key)) != 0))
+			while (tmp && ft_strcmp(tmp->key, key))
 				tmp = tmp->next;
 			if (tmp)
 				return (tmp->value);

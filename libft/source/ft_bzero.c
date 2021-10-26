@@ -6,11 +6,10 @@
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/28 21:11:28 by fbafica           #+#    #+#             */
-/*   Updated: 2021/06/08 14:56:16 by fbafica          ###   ########.fr       */
+/*   Updated: 2021/10/25 16:51:54 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include "libft.h"
 
 void	ft_bzero(void *s, size_t n)

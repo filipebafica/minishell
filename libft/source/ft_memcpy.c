@@ -6,11 +6,10 @@
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/28 22:54:46 by fbafica           #+#    #+#             */
-/*   Updated: 2021/06/19 13:54:05 by fbafica          ###   ########.fr       */
+/*   Updated: 2021/10/25 16:52:13 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include "libft.h"
 
 void	*ft_memcpy(void *dest, const void *src, size_t n)

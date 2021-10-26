@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   hash_table_insert.c                                :+:      :+:    :+:   */
+/*   ht_insert.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/15 20:48:06 by fbafica           #+#    #+#             */
-/*   Updated: 2021/10/18 18:20:58 by fbafica          ###   ########.fr       */
+/*   Updated: 2021/10/25 17:44:50 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static void	non_empty_index(t_table *table, t_pair *curr, \
 t_pair *new, int index)
 {
-	if (ft_strncmp(curr->key, new->key, ft_strlen(new->key)) == 0)
+	if (!ft_strcmp(curr->key, new->key))
 	{
 		free_pair(curr);
 		table->pairs[index] = new;

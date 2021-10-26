@@ -6,7 +6,7 @@
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/08 14:49:23 by fbafica           #+#    #+#             */
-/*   Updated: 2021/10/24 19:10:12 by fbafica          ###   ########.fr       */
+/*   Updated: 2021/10/25 21:08:16 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,10 @@
 
 int	main(void)
 {
-	char	**tokens;
+	int	status;
 
-	while (1)
-	{
-		tokens = input_handler(readline("$"));
-		free_tokens(tokens);
-	}
+	status = 1;
+	while (status)
+		status = run_shell();
 	return (0);
 }

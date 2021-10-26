@@ -6,11 +6,10 @@
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/26 15:26:58 by fbafica           #+#    #+#             */
-/*   Updated: 2021/06/18 15:02:10 by fbafica          ###   ########.fr       */
+/*   Updated: 2021/10/25 16:52:42 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
 #include "libft.h"
 
 static	int	get_factor(int n)

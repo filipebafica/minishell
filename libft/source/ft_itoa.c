@@ -6,11 +6,10 @@
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/24 14:02:52 by fbafica           #+#    #+#             */
-/*   Updated: 2021/06/21 23:31:39 by fbafica          ###   ########.fr       */
+/*   Updated: 2021/10/25 16:52:01 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include "libft.h"
 
 static	void	fill_array(int n, int len, char *array)
