@@ -1,23 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   find_operator.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/08 14:49:23 by fbafica           #+#    #+#             */
-/*   Updated: 2021/10/27 20:11:41 by fbafica          ###   ########.fr       */
+/*   Created: 2021/10/29 21:05:03 by fbafica           #+#    #+#             */
+/*   Updated: 2021/11/01 17:28:29 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	main(void)
+int	find_pipe(char **tokens)
 {
-	int	status;
+	int	i;
 
-	status = 1;
-	while (status)
-		status = run_shell();
-	return (0);
+	i = 0;
+	while (*tokens)
+	{
+		if ((*tokens)[0] == '|')
+			break ;
+		++i;
+		++tokens;
+	}
+	if (!*tokens)
+		return (0);
+	else
+		return (i);
 }

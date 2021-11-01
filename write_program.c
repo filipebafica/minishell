@@ -1,23 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   program.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/08 14:49:23 by fbafica           #+#    #+#             */
-/*   Updated: 2021/10/27 20:11:41 by fbafica          ###   ########.fr       */
+/*   Created: 2021/10/26 11:41:48 by fbafica           #+#    #+#             */
+/*   Updated: 2021/10/26 15:47:26 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include <stdio.h>
+#include <stdlib.h>
 
 int	main(void)
 {
-	int	status;
-
-	status = 1;
-	while (status)
-		status = run_shell();
+	printf("hello world\n");
 	return (0);
 }

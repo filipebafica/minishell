@@ -6,18 +6,49 @@
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/22 14:20:35 by fbafica           #+#    #+#             */
-/*   Updated: 2021/10/24 19:10:05 by fbafica          ###   ########.fr       */
+/*   Updated: 2021/11/01 20:04:45 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	print_tokens(char **tokens)
+char	**sub_tokens(char **tokens, int start, int end)
+{
+	char	**new_tokens;
+	int		i;
+
+	new_tokens = malloc(sizeof(char *) * (1 + end - start));
+	i = 0;
+	while (i < (end - start))
+	{
+		new_tokens[i] = ft_strdup(tokens[start + i]);
+		++i;
+	}
+	new_tokens[i] = (char *) '\0';
+	return (new_tokens);
+}
+
+int	get_tokens_len(char **tokens)
 {
 	int	i;
 
 	i = 0;
-	while (tokens[i] != (char *) '\0')
+	while (*tokens)
+	{
+		++i;
+		++tokens;
+	}
+	return (i);
+}
+
+void	print_tokens(char **tokens)
+{
+	int	i;
+	int	len;
+
+	i = 0;
+	len = get_tokens_len(tokens);
+	while (i < len)
 	{
 		printf("%s\n", (tokens[i]));
 		++i;
@@ -27,14 +58,17 @@ void	print_tokens(char **tokens)
 void	free_tokens(char **tokens)
 {
 	int	i;
+	int	len;
 
-	i = 0;
 	if (!tokens)
 		return ;
-	while (tokens[i] != (char *) '\0')
+	i = 0;
+	len = get_tokens_len(tokens);
+	while (i < len)
 	{
 		free(tokens[i]);
 		++i;
 	}
-	free(tokens);
+	if (tokens)
+		free(tokens);
 }

@@ -6,15 +6,20 @@
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/08 14:49:38 by fbafica           #+#    #+#             */
-/*   Updated: 2021/10/25 21:17:30 by fbafica          ###   ########.fr       */
+/*   Updated: 2021/11/01 19:07:58 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINISHELL_H
 # define MINISHELL_H
+# define IN 0
+# define OUT 1
 # include "libft.h"
 # include <stdio.h>
 # include <stdlib.h>
+# include <unistd.h>
+# include <sys/wait.h>
+# include <sys/types.h>
 # include <readline/readline.h>
 # include <readline/history.h>
 
@@ -60,6 +65,12 @@ void				print_table(t_table *table);
 char				**get_tokens(char *s);
 void				print_tokens(char **tokens);
 void				free_tokens(char **tokens);
-int					launcher(char **args);
-void				echo(char **s);
+int					get_tokens_len(char **tokens);
+char				**sub_tokens(char **tokens, int start, int end);
+int					parser(char **tokens);
+int					exec(char **commands);
+int					is_builtin(char **commands);
+int					find_pipe(char **tokens);
+void				init_pipe(char **tokens);
+int					echo(char **commands);
 #endif

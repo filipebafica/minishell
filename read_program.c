@@ -1,23 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   read_program.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/08 14:49:23 by fbafica           #+#    #+#             */
-/*   Updated: 2021/10/27 20:11:41 by fbafica          ###   ########.fr       */
+/*   Created: 2021/10/26 11:41:48 by fbafica           #+#    #+#             */
+/*   Updated: 2021/10/31 14:33:28 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
 
 int	main(void)
 {
-	int	status;
+	char	*buffer;
 
-	status = 1;
-	while (status)
-		status = run_shell();
+	buffer = malloc(99);
+	read(STDIN_FILENO, buffer, 99);
+	printf("reading: %s", buffer);
+	if (buffer)
+		free(buffer);
 	return (0);
 }
