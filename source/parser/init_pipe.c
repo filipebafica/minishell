@@ -6,7 +6,7 @@
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/31 13:07:00 by fbafica           #+#    #+#             */
-/*   Updated: 2021/11/01 19:13:11 by fbafica          ###   ########.fr       */
+/*   Updated: 2021/11/02 13:48:37 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,10 @@ static void	save_std_fd(int *std_fd)
 	std_fd[OUT] = dup(STDOUT_FILENO);
 }
 
-void	init_pipe(char **tokens)
+void	init_pipe(void)
 {
 	int	std_fd[2];
 
 	save_std_fd(std_fd);
 	create_pipe();
-	exec(tokens);
 }

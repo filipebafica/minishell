@@ -6,7 +6,7 @@
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/08 14:49:38 by fbafica           #+#    #+#             */
-/*   Updated: 2021/11/01 19:07:58 by fbafica          ###   ########.fr       */
+/*   Updated: 2021/11/02 23:44:51 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,6 @@ int					parser(char **tokens);
 int					exec(char **commands);
 int					is_builtin(char **commands);
 int					find_pipe(char **tokens);
-void				init_pipe(char **tokens);
+void				init_pipe(void);
 int					echo(char **commands);
 #endif
