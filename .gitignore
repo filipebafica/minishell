@@ -1,2 +1,6 @@
 *.bash
 .vscode/
+read_program
+read_program.c
+write_program
+write_program.c

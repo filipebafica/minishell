@@ -6,13 +6,13 @@
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/29 21:05:03 by fbafica           #+#    #+#             */
-/*   Updated: 2021/11/01 17:28:29 by fbafica          ###   ########.fr       */
+/*   Updated: 2021/11/03 14:41:09 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	find_pipe(char **tokens)
+int	find_pipe_operator(char **tokens)
 {
 	int	i;
 
