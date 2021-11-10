@@ -6,7 +6,7 @@
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/18 22:07:59 by fbafica           #+#    #+#             */
-/*   Updated: 2021/10/18 22:09:05 by fbafica          ###   ########.fr       */
+/*   Updated: 2021/11/09 16:21:57 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,9 @@ void	print_search(t_table *table, char *key)
 
 	value = search_a_key(table, key);
 	if (!value)
-	{
-		printf("key: %s doesn't exist\n", key);
 		return ;
-	}
 	else
-		printf("key: %s, value: %s\n", key, value);
+		printf("%s", value);
 }
 
 void	print_table(t_table *table)

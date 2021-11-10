@@ -6,44 +6,44 @@
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 15:22:46 by fbafica           #+#    #+#             */
-/*   Updated: 2021/11/03 15:45:22 by fbafica          ###   ########.fr       */
+/*   Updated: 2021/11/08 17:45:24 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-static void	is_cloded(int *sing, int *doub, char *who_first)
+static void	is_closed(int *sing, int *doub, char *first_quote)
 {
 	if (*sing == 2)
 	{
-		if (*who_first == 's' && *doub == 1)
+		if (*first_quote == 's' && *doub == 1)
 			*doub = 0;
-		if (*who_first == 's')
-			*who_first = '-';
+		if (*first_quote == 's')
+			*first_quote = '-';
 		*sing = 0;
 	}
 	if (*doub == 2)
 	{
-		if (*who_first == 'd' && *sing == 1)
+		if (*first_quote == 'd' && *sing == 1)
 			*sing = 0;
-		if (*who_first == 'd')
-			*who_first = '-';
+		if (*first_quote == 'd')
+			*first_quote = '-';
 		*doub = 0;
 	}
 }
 
-static void	is_quote(int *sing, int *doub, char *who_first, char c)
+static void	is_quote(int *sing, int *doub, char *first_quote, char c)
 {
 	if (c == "'"[0])
 	{
-		if (*who_first == '-')
-			*who_first = 's';
+		if (*first_quote == '-')
+			*first_quote = 's';
 		++*sing;
 	}
 	if (c == '"')
 	{
-		if (*who_first == '-')
-			*who_first = 'd';
+		if (*first_quote == '-')
+			*first_quote = 'd';
 		++*doub;
 	}
 }
@@ -52,17 +52,17 @@ int	quotes_check(char *input)
 {
 	int		sing;
 	int		doub;
-	char	who_first;
+	char	first_quote;
 	int		i;
 
 	sing = 0;
 	doub = 0;
-	who_first = '-';
+	first_quote = '-';
 	i = 0;
 	while (input[i] != '\0')
 	{
-		is_quote(&sing, &doub, &who_first, input[i]);
-		is_cloded(&sing, &doub, &who_first);
+		is_quote(&sing, &doub, &first_quote, input[i]);
+		is_closed(&sing, &doub, &first_quote);
 		++i;
 	}
 	if (sing + doub != 0)

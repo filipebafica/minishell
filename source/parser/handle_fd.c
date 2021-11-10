@@ -6,13 +6,13 @@
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/31 13:07:00 by fbafica           #+#    #+#             */
-/*   Updated: 2021/11/04 17:57:13 by fbafica          ###   ########.fr       */
+/*   Updated: 2021/11/10 18:32:44 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	manage_pipe(int	is_pipe)
+void	manage_pipe(int is_pipe)
 {
 	static int	tmp_fd;
 	int			new_fd[2];
