@@ -6,7 +6,7 @@
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/08 14:49:38 by fbafica           #+#    #+#             */
-/*   Updated: 2021/11/10 18:41:29 by fbafica          ###   ########.fr       */
+/*   Updated: 2021/11/11 17:05:43 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,5 +83,8 @@ void				save_std_fd(int *std_fd);
 void				restore_std_fd(int *std_fd);
 void				handle_pipe_fd(int is_pipe);
 int					echo(char **commands);
+int					cd(char **commands);
+char				*get_curr_dir(void);
+int					pwd(void);
 void				manage_pipe(int is_pipe);
 #endif
