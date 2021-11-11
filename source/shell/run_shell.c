@@ -6,7 +6,7 @@
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 14:46:30 by fbafica           #+#    #+#             */
-/*   Updated: 2021/11/11 17:06:28 by fbafica          ###   ########.fr       */
+/*   Updated: 2021/11/11 19:00:48 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,20 @@ static int	invalid_input(void)
 int	run_shell(void)
 {
 	char	*input;
+	char	*prompt;
+	char	*curr_dir;
+	int		status;
 
-	input = readline(ft_strjoin(get_curr_dir(), "$ "));
+	curr_dir = get_curr_dir();
+	prompt = ft_strjoin(curr_dir, "$ ");
+	input = readline(prompt);
 	add_history(input);
 	if (!quotes_check(input))
-		return (invalid_input());
+		status = invalid_input();
 	else
-		return (valid_input(input));
+		status = valid_input(input);
+	free(curr_dir);
+	free(prompt);
+	free(input);
+	return (status);
 }

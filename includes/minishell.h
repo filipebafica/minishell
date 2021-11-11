@@ -6,7 +6,7 @@
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/08 14:49:38 by fbafica           #+#    #+#             */
-/*   Updated: 2021/11/11 17:05:43 by fbafica          ###   ########.fr       */
+/*   Updated: 2021/11/11 18:54:36 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,5 +86,6 @@ int					echo(char **commands);
 int					cd(char **commands);
 char				*get_curr_dir(void);
 int					pwd(void);
+int					exit_shell(void);
 void				manage_pipe(int is_pipe);
 #endif

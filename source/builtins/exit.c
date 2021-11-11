@@ -1,31 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pwd.c                                              :+:      :+:    :+:   */
+/*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/11 16:57:13 by fbafica           #+#    #+#             */
-/*   Updated: 2021/11/11 19:03:09 by fbafica          ###   ########.fr       */
+/*   Created: 2021/11/11 18:52:38 by fbafica           #+#    #+#             */
+/*   Updated: 2021/11/11 18:54:45 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
-
-char	*get_curr_dir(void)
+int	exit_shell(void)
 {
-	char	*buffer;
-
-	buffer = NULL;
-	return (getcwd(buffer, 0));
-}
-
-int	pwd(void)
-{
-	char	*curr_dir;
-
-	curr_dir = get_curr_dir();
-	ft_putendl_fd(curr_dir, 1);
-	free(curr_dir);
-	return (1);
+	return (0);
 }

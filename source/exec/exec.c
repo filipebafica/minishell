@@ -6,7 +6,7 @@
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/27 11:08:49 by fbafica           #+#    #+#             */
-/*   Updated: 2021/11/11 17:07:16 by fbafica          ###   ########.fr       */
+/*   Updated: 2021/11/11 19:08:34 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,10 @@ static int	exec_non_builtin(char **commands)
 
 	pid = fork();
 	if (pid == 0)
+	{
 		execve(*commands, commands, NULL);
+		exit(0);
+	}
 	else
 		wait(NULL);
 	return (1);
@@ -32,6 +35,8 @@ static int	exec_builtin(char **commands)
 		return (cd(commands));
 	if (!ft_strcmp(*commands, "pwd"))
 		return (pwd());
+	if (!ft_strcmp(*commands, "exit"))
+		return (exit_shell());
 	return (1);
 }
 

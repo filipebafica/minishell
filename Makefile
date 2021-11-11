@@ -6,7 +6,7 @@
 #    By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/08 14:36:44 by fbafica           #+#    #+#              #
-#    Updated: 2021/11/11 17:02:48 by fbafica          ###   ########.fr        #
+#    Updated: 2021/11/11 18:53:26 by fbafica          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ SOURCE_CODE = ./source/main.c \
 ./source/shell/run_shell.c ./source/shell/variables_handler.c\
 ./source/parser/parser.c ./source/parser/find_operator.c ./source/parser/handle_fd.c \
 ./source/exec/exec.c \
-./source/builtins/is_builtin.c ./source/builtins/echo.c ./source/builtins/cd.c ./source/builtins/pwd.c \
+./source/builtins/is_builtin.c ./source/builtins/echo.c ./source/builtins/cd.c ./source/builtins/pwd.c ./source/builtins/exit.c \
 ./source/tokenizer/space_handler.c ./source/tokenizer/quotes_check.c ./source/tokenizer/get_tokens.c ./source/tokenizer/tokens_utils.c \
 ./source/hashtable/hash_function.c ./source/hashtable/ht_create.c ./source/hashtable/ht_insert.c ./source/hashtable/ht_delete.c \
 ./source/hashtable/ht_search.c ./source/hashtable/ht_free.c ./source/hashtable/ht_print.c \
