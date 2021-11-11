@@ -6,7 +6,7 @@
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/27 11:08:49 by fbafica           #+#    #+#             */
-/*   Updated: 2021/11/11 19:08:34 by fbafica          ###   ########.fr       */
+/*   Updated: 2021/11/11 19:12:02 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,25 @@ static int	exec_builtin(char **commands)
 	if (!ft_strcmp(*commands, "exit"))
 		return (exit_shell());
 	return (1);
+}
+
+static int	is_builtin(char **commands)
+{
+	if (!ft_strcmp(*commands, "echo"))
+		return (1);
+	if (!ft_strcmp(*commands, "cd"))
+		return (1);
+	if (!ft_strcmp(*commands, "pwd"))
+		return (1);
+	if (!ft_strcmp(*commands, "export"))
+		return (1);
+	if (!ft_strcmp(*commands, "unset"))
+		return (1);
+	if (!ft_strcmp(*commands, "env"))
+		return (1);
+	if (!ft_strcmp(*commands, "exit"))
+		return (1);
+	return (0);
 }
 
 int	exec(char **commands)

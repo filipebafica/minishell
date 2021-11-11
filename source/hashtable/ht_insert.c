@@ -6,7 +6,7 @@
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/15 20:48:06 by fbafica           #+#    #+#             */
-/*   Updated: 2021/10/25 17:44:50 by fbafica          ###   ########.fr       */
+/*   Updated: 2021/11/11 19:15:55 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static void	empty_index(t_table *table, t_pair *new, int index)
 {
 	if (table->count == table->size)
 	{
-		printf("insert error: the table is full\n");
+		ft_putendl_fd("insert error: the table is full", 1);
 		free_pair(new);
 		return ;
 	}

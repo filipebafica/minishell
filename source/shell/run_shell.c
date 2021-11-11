@@ -6,7 +6,7 @@
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 14:46:30 by fbafica           #+#    #+#             */
-/*   Updated: 2021/11/11 19:00:48 by fbafica          ###   ########.fr       */
+/*   Updated: 2021/11/11 19:17:33 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static int	valid_input(char *input)
 
 static int	invalid_input(void)
 {
-	printf("bad syntax\n");
+	ft_putendl_fd("bad syntax", 1);
 	return (1);
 }
 
