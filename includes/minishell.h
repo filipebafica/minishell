@@ -6,7 +6,7 @@
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/08 14:49:38 by fbafica           #+#    #+#             */
-/*   Updated: 2021/11/12 14:32:28 by fbafica          ###   ########.fr       */
+/*   Updated: 2021/11/12 18:04:12 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,17 +38,6 @@ typedef struct s_table
 	int		size;
 }	t_table;
 
-// typedef struct s_command
-// {
-// 	char				*command;
-// 	struct s_command	*next;
-// }	t_command;
-
-// typedef struct s_commands
-// {
-// 	t_command	*head;
-// }	t_commands;
-
 typedef struct s_var_tables
 {
 	t_table	*loc_var;
@@ -57,7 +46,8 @@ typedef struct s_var_tables
 
 t_var_tables		g_var_tables;
 void				create_var_tables(void);
-void				started_env_to_var_table(char **started_env);
+void				env_var_to_var_table(char **env_var);
+char				**var_table_to_env_var(void);
 int					run_shell(void);
 void				space_handler(char **input);
 int					quotes_check(char *input);

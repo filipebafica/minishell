@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   variables_handler.c                                :+:      :+:    :+:   */
+/*   vars_utils1.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 12:18:35 by fbafica           #+#    #+#             */
-/*   Updated: 2021/11/12 14:49:08 by fbafica          ###   ########.fr       */
+/*   Updated: 2021/11/12 17:22:48 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,23 +41,6 @@ void	expand_var(char **tokens)
 			else
 				handle_local_var(tokens[i - 1], tokens[i + 1]);
 		}
-		++i;
-	}
-}
-
-void	started_env_to_var_table(char **started_env)
-{
-	char	*key;
-	char	*value;
-	int		i;
-
-	i = 0;
-	while (started_env[i])
-	{
-		key = ft_substr(started_env[i], 0, ft_strchrlen(started_env[i], '='));
-		value = ft_strchr(started_env[i], '=') + 1;
-		table_insert_pair(g_var_tables.env_var, key, value);
-		free(key);
 		++i;
 	}
 }

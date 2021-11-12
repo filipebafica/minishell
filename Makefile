@@ -6,7 +6,7 @@
 #    By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/08 14:36:44 by fbafica           #+#    #+#              #
-#    Updated: 2021/11/12 14:30:32 by fbafica          ###   ########.fr        #
+#    Updated: 2021/11/12 18:01:09 by fbafica          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ FT_PRINTF = ./ft_printf/ft_printf.a
 INCLUDE_PATH = ./includes/
 FLAGS = -g -fsanitize=address -Wall -Wextra -Werror -lreadline
 SOURCE_CODE = ./source/main.c \
-./source/shell/run_shell.c ./source/shell/variables_handler.c\
+./source/shell/run_shell.c ./source/shell/vars_utils1.c ./source/shell/vars_utils2.c \
 ./source/parser/parser.c ./source/parser/find_operator.c ./source/parser/handle_fd.c \
 ./source/exec/exec.c \
 ./source/builtins/echo.c ./source/builtins/cd.c ./source/builtins/pwd.c ./source/builtins/exit.c \

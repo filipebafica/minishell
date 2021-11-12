@@ -6,7 +6,7 @@
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/22 14:20:35 by fbafica           #+#    #+#             */
-/*   Updated: 2021/11/01 20:04:45 by fbafica          ###   ########.fr       */
+/*   Updated: 2021/11/12 18:06:15 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	print_tokens(char **tokens)
 	len = get_tokens_len(tokens);
 	while (i < len)
 	{
-		printf("%s\n", (tokens[i]));
+		ft_printf("%s\n", (tokens[i]));
 		++i;
 	}
 }
