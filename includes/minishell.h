@@ -6,7 +6,7 @@
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/08 14:49:38 by fbafica           #+#    #+#             */
-/*   Updated: 2021/11/11 19:13:02 by fbafica          ###   ########.fr       */
+/*   Updated: 2021/11/12 14:32:28 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 # define IN 0
 # define OUT 1
 # include "libft.h"
+# include "ft_printf.h"
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
@@ -56,6 +57,7 @@ typedef struct s_var_tables
 
 t_var_tables		g_var_tables;
 void				create_var_tables(void);
+void				started_env_to_var_table(char **started_env);
 int					run_shell(void);
 void				space_handler(char **input);
 int					quotes_check(char *input);
@@ -86,5 +88,6 @@ int					cd(char **commands);
 char				*get_curr_dir(void);
 int					pwd(void);
 int					exit_shell(void);
+int					env(void);
 void				manage_pipe(int is_pipe);
 #endif

@@ -6,7 +6,7 @@
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/25 16:36:05 by fbafica           #+#    #+#             */
-/*   Updated: 2021/11/10 19:29:38 by fbafica          ###   ########.fr       */
+/*   Updated: 2021/11/12 15:02:34 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,15 @@ static int	get_var_len(char *arg, int start, int max_len)
 
 static int	print_var(char *arg, int start, int arg_len)
 {
-	int	var_len;
+	int		var_len;
+	char	*key;
 
 	++start;
 	var_len = get_var_len(arg, start, arg_len);
-	print_search(g_var_tables.env_var, ft_substr(arg, start, var_len));
-	print_search(g_var_tables.loc_var, ft_substr(arg, start, var_len));
+	key = ft_substr(arg, start, var_len);
+	print_search(g_var_tables.env_var, key);
+	print_search(g_var_tables.loc_var, key);
+	free(key);
 	return (var_len);
 }
 
@@ -92,10 +95,10 @@ int	echo(char **commands)
 	{
 		print_arg(commands[i]);
 		if (i < (commands_len - 1))
-			ft_putchar_fd(' ', 1);
+			ft_printf(" ");
 		++i;
 	}
 	if (ft_strcmp(commands[1], "-n"))
-		ft_putchar_fd('\n', 1);
+		ft_printf("\n");
 	return (1);
 }

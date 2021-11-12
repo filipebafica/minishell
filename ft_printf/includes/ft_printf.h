@@ -1,25 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/08 14:49:23 by fbafica           #+#    #+#             */
-/*   Updated: 2021/11/12 14:04:48 by fbafica          ###   ########.fr       */
+/*   Created: 2021/07/16 14:49:52 by fbafica           #+#    #+#             */
+/*   Updated: 2021/07/20 22:47:35 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
 
-int	main(void)
-{
-	int	status;
+# include <unistd.h>
+# include <stdlib.h>
+# include <stdarg.h>
 
-	create_var_tables();
-	started_env_to_var_table(__environ);
-	status = 1;
-	while (status)
-		status = run_shell();
-	return (0);
-}
+int	ft_printf(const char *format, ...);
+int	handle_s(char *s);
+int	handle_c(char c);
+int	handle_pct(void);
+int	handle_hex(unsigned int decimal_num, char specifier);
+int	handle_ptr(size_t decimal_num);
+int	handle_nbr(int n);
+int	handle_uint(unsigned int n);
+
+#endif

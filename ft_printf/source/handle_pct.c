@@ -1,25 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   handle_pct.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/08 14:49:23 by fbafica           #+#    #+#             */
-/*   Updated: 2021/11/12 14:04:48 by fbafica          ###   ########.fr       */
+/*   Created: 2021/07/16 22:11:28 by fbafica           #+#    #+#             */
+/*   Updated: 2021/11/12 14:21:55 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "ft_printf.h"
 
-int	main(void)
+int	handle_pct(void)
 {
-	int	status;
+	char	c;
 
-	create_var_tables();
-	started_env_to_var_table(__environ);
-	status = 1;
-	while (status)
-		status = run_shell();
-	return (0);
+	c = '%';
+	write(1, &c, 1);
+	return (1);
 }

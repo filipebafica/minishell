@@ -6,7 +6,7 @@
 #    By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/08 14:36:44 by fbafica           #+#    #+#              #
-#    Updated: 2021/11/11 19:13:21 by fbafica          ###   ########.fr        #
+#    Updated: 2021/11/12 14:30:32 by fbafica          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,9 @@ NAME = minishell
 LIBFT_INCLUDE = ./libft/includes/
 LIBFT = ./libft/libft.a
 
+FT_PRINTF_INCLUDE = ./ft_printf/includes/
+FT_PRINTF = ./ft_printf/ft_printf.a
+
 INCLUDE_PATH = ./includes/
 FLAGS = -g -fsanitize=address -Wall -Wextra -Werror -lreadline
 SOURCE_CODE = ./source/main.c \
@@ -22,6 +25,7 @@ SOURCE_CODE = ./source/main.c \
 ./source/parser/parser.c ./source/parser/find_operator.c ./source/parser/handle_fd.c \
 ./source/exec/exec.c \
 ./source/builtins/echo.c ./source/builtins/cd.c ./source/builtins/pwd.c ./source/builtins/exit.c \
+./source/builtins/env.c \
 ./source/tokenizer/space_handler.c ./source/tokenizer/quotes_check.c ./source/tokenizer/get_tokens.c ./source/tokenizer/tokens_utils.c \
 ./source/hashtable/hash_function.c ./source/hashtable/ht_create.c ./source/hashtable/ht_insert.c ./source/hashtable/ht_delete.c \
 ./source/hashtable/ht_search.c ./source/hashtable/ht_free.c ./source/hashtable/ht_print.c \
@@ -30,17 +34,22 @@ CC = gcc
 
 all: $(NAME)
 
-$(NAME): $(SOURCE_CODE) $(LIBFT)
-	@$(CC) $^ $(FLAGS) -I$(INCLUDE_PATH) -I$(LIBFT_INCLUDE) -o $@
+$(NAME): $(SOURCE_CODE) $(LIBFT) $(FT_PRINTF)
+	@$(CC) $^ $(FLAGS) -I$(INCLUDE_PATH) -I$(LIBFT_INCLUDE) -I$(FT_PRINTF_INCLUDE) -o $@
 
 $(LIBFT):
 	@make -C libft
 
+$(FT_PRINTF):
+	@make -C ft_printf
+
 clean:
 	@make clean -C libft
+	@make clean -C ft_printf
 
 fclean: clean
 	@make fclean -C libft
+	@make fclean -C ft_printf
 	@rm -f $(NAME)
 
 re: fclean all

@@ -1,25 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   handle_s.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/08 14:49:23 by fbafica           #+#    #+#             */
-/*   Updated: 2021/11/12 14:04:48 by fbafica          ###   ########.fr       */
+/*   Created: 2021/07/16 19:51:56 by fbafica           #+#    #+#             */
+/*   Updated: 2021/11/12 14:22:05 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include <unistd.h>
 
-int	main(void)
+int	handle_s(char *s)
 {
-	int	status;
+	int		i;
 
-	create_var_tables();
-	started_env_to_var_table(__environ);
-	status = 1;
-	while (status)
-		status = run_shell();
-	return (0);
+	i = 0;
+	if (!s)
+		s = "(null)";
+	while (s[i] != '\0')
+	{
+		write(1, &s[i], 1);
+		++i;
+	}
+	return (i);
 }

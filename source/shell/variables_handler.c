@@ -6,7 +6,7 @@
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 12:18:35 by fbafica           #+#    #+#             */
-/*   Updated: 2021/11/10 18:48:00 by fbafica          ###   ########.fr       */
+/*   Updated: 2021/11/12 14:49:08 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,25 @@ void	expand_var(char **tokens)
 	}
 }
 
+void	started_env_to_var_table(char **started_env)
+{
+	char	*key;
+	char	*value;
+	int		i;
+
+	i = 0;
+	while (started_env[i])
+	{
+		key = ft_substr(started_env[i], 0, ft_strchrlen(started_env[i], '='));
+		value = ft_strchr(started_env[i], '=') + 1;
+		table_insert_pair(g_var_tables.env_var, key, value);
+		free(key);
+		++i;
+	}
+}
+
 void	create_var_tables(void)
 {
 	g_var_tables.loc_var = create_table(100);
-	g_var_tables.env_var = create_table(100);
+	g_var_tables.env_var = create_table(get_tokens_len(__environ) * 3);
 }
