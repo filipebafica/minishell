@@ -1,25 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   unset.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/08 14:49:23 by fbafica           #+#    #+#             */
-/*   Updated: 2021/11/12 20:43:52 by fbafica          ###   ########.fr       */
+/*   Created: 2021/11/12 23:57:32 by fbafica           #+#    #+#             */
+/*   Updated: 2021/11/13 00:10:00 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	main(void)
+int	unset_var(char **commands)
 {
-	int	status;
+	int	i;
 
-	create_var_tables();
-	env_var_to_var_table(__environ);
-	status = 1;
-	while (status)
-		status = run_shell();
-	return (0);
+	i = 1;
+	while (commands[i])
+	{
+		table_delete_pair(g_var_tables.env_var, commands[i]);
+		++i;
+	}
+	return (1);
 }

@@ -6,13 +6,13 @@
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 17:22:26 by fbafica           #+#    #+#             */
-/*   Updated: 2021/11/12 18:18:08 by fbafica          ###   ########.fr       */
+/*   Updated: 2021/11/12 18:43:01 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-static char *join_key_value(int index)
+static char	*join_key_value(int index)
 {
 	char	*key;
 	char	*value;

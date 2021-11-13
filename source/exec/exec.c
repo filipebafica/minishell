@@ -6,7 +6,7 @@
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/27 11:08:49 by fbafica           #+#    #+#             */
-/*   Updated: 2021/11/12 18:19:23 by fbafica          ###   ########.fr       */
+/*   Updated: 2021/11/13 00:08:24 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,10 @@ static int	exec_builtin(char **commands)
 		return (exit_shell());
 	if (!ft_strcmp(*commands, "env"))
 		return (env());
+	if (!ft_strcmp(*commands, "export"))
+		return (export_var(commands));
+	if (!ft_strcmp(*commands, "unset"))
+		return (unset_var(commands));
 	return (1);
 }
 

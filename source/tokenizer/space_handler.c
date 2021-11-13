@@ -6,7 +6,7 @@
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 15:45:03 by fbafica           #+#    #+#             */
-/*   Updated: 2021/10/28 20:20:50 by fbafica          ###   ########.fr       */
+/*   Updated: 2021/11/12 23:54:20 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,16 @@ static void	add_space(char **input, int index)
 
 	if ((*input)[index + 1] != ' ' && (*input)[index + 1] != '\0')
 		++index;
-	frst_half = ft_substr(*input, 0, index);
-	frst_half = ft_strjoin(frst_half, " ");
+	tmp = ft_substr(*input, 0, index);
+	frst_half = ft_strjoin(tmp, " ");
+	free(tmp);
 	scnd_half = ft_substr(*input, index, ft_strlen(*input) - index);
 	tmp = ft_strdup(*input);
 	free(*input);
 	*input = ft_strjoin(frst_half, scnd_half);
 	free(tmp);
+	free(frst_half);
+	free(scnd_half);
 }
 
 void	space_handler(char **input)
@@ -35,7 +38,7 @@ void	space_handler(char **input)
 	int		i;
 	int		j;
 
-	set = "><|";
+	set = "=><|";
 	i = 1;
 	while ((*input)[i] != '\0')
 	{

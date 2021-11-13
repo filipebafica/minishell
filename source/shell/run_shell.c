@@ -6,7 +6,7 @@
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 14:46:30 by fbafica           #+#    #+#             */
-/*   Updated: 2021/11/11 19:17:33 by fbafica          ###   ########.fr       */
+/*   Updated: 2021/11/12 23:55:39 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ static int	valid_input(char *input)
 	space_handler(&input);
 	tokens = get_tokens(input);
 	status = parser(tokens);
+	free(input);
 	free_tokens(tokens);
 	return (status);
 }
@@ -47,6 +48,5 @@ int	run_shell(void)
 		status = valid_input(input);
 	free(curr_dir);
 	free(prompt);
-	free(input);
 	return (status);
 }
