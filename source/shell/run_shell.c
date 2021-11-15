@@ -6,7 +6,7 @@
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 14:46:30 by fbafica           #+#    #+#             */
-/*   Updated: 2021/11/12 23:55:39 by fbafica          ###   ########.fr       */
+/*   Updated: 2021/11/15 18:22:43 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,14 @@
 static int	valid_input(char *input)
 {
 	char	**tokens;
+	char	*mod_input;
 	int		status;
 
-	space_handler(&input);
-	tokens = get_tokens(input);
+	mod_input = ft_strdup(input);
+	space_handler(&mod_input);
+	tokens = get_tokens(mod_input);
 	status = parser(tokens);
-	free(input);
+	free(mod_input);
 	free_tokens(tokens);
 	return (status);
 }
@@ -42,10 +44,13 @@ int	run_shell(void)
 	prompt = ft_strjoin(curr_dir, "$ ");
 	input = readline(prompt);
 	add_history(input);
-	if (!quotes_check(input))
+	if (no_input_check(input))
+		status = 1;
+	else if (!quotes_check(input) || !init_end_check(input))
 		status = invalid_input();
 	else
 		status = valid_input(input);
+	free(input);
 	free(curr_dir);
 	free(prompt);
 	return (status);

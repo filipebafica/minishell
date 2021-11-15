@@ -6,7 +6,7 @@
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/27 11:08:49 by fbafica           #+#    #+#             */
-/*   Updated: 2021/11/13 00:08:24 by fbafica          ###   ########.fr       */
+/*   Updated: 2021/11/15 18:17:57 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,11 @@
 static int	exec_non_builtin(char **commands)
 {
 	int		pid;
-	char	**env_var;
 
 	pid = fork();
 	if (pid == 0)
 	{
-		env_var = var_table_to_env_var();
-		execve(*commands, commands, env_var);
-		free_tokens(env_var);
+		execve(*commands, commands, 0);
 		exit(0);
 	}
 	else

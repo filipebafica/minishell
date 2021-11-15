@@ -6,7 +6,7 @@
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/08 14:49:38 by fbafica           #+#    #+#             */
-/*   Updated: 2021/11/13 00:08:06 by fbafica          ###   ########.fr       */
+/*   Updated: 2021/11/15 18:16:48 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,8 @@ void				create_var_tables(void);
 void				env_var_to_var_table(char **env_var);
 char				**var_table_to_env_var(void);
 int					run_shell(void);
+int					no_input_check(char *input);
+int					init_end_check(char *input);
 void				space_handler(char **input);
 int					quotes_check(char *input);
 unsigned long int	hash_a_key(char *key, unsigned int table_size);
