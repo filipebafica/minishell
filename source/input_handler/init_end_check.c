@@ -6,7 +6,7 @@
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/15 16:57:08 by fbafica           #+#    #+#             */
-/*   Updated: 2021/11/15 17:29:31 by fbafica          ###   ########.fr       */
+/*   Updated: 2021/11/15 20:06:55 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	init_end_check(char *input)
 	i = 0;
 	while (set[i] != '\0')
 	{
-		if (input[0] == set[i] || input[len] == set[i])
+		if (input[0] == set[i] || input[len - 1] == set[i])
 			return (0);
 		++i;
 	}

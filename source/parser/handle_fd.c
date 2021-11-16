@@ -6,7 +6,7 @@
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/31 13:07:00 by fbafica           #+#    #+#             */
-/*   Updated: 2021/11/10 18:32:44 by fbafica          ###   ########.fr       */
+/*   Updated: 2021/11/16 19:32:05 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,10 @@ void	manage_pipe(int is_pipe)
 	if (!is_pipe)
 		return ;
 	pipe(new_fd);
-	dup2(new_fd[OUT], STDOUT_FILENO);
-	close(new_fd[OUT]);
-	tmp_fd = dup(new_fd[IN]);
-	close(new_fd[IN]);
+	dup2(new_fd[1], STDOUT_FILENO);
+	close(new_fd[1]);
+	tmp_fd = dup(new_fd[0]);
+	close(new_fd[0]);
 }
 
 void	restore_std_fd(int *std_fd)

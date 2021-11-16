@@ -6,7 +6,7 @@
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/08 14:49:38 by fbafica           #+#    #+#             */
-/*   Updated: 2021/11/15 18:16:48 by fbafica          ###   ########.fr       */
+/*   Updated: 2021/11/15 20:29:49 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 # define MINISHELL_H
 # define IN 0
 # define OUT 1
+# define COLOR_RED "\x1b[1;31m"
+# define COLOR_RESET "\x1b[0m"
 # include "libft.h"
 # include "ft_printf.h"
 # include <stdio.h>
