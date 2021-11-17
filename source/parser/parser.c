@@ -6,7 +6,7 @@
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/29 16:53:28 by fbafica           #+#    #+#             */
-/*   Updated: 2021/11/16 19:29:59 by fbafica          ###   ########.fr       */
+/*   Updated: 2021/11/16 23:16:46 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static int	parse_pipe_args(char **tokens, int tokens_len)
 {
-	int		end;
+	int		command_len;
 	int		start;
 	int		status;
 	char	**commands;
@@ -24,14 +24,14 @@ static int	parse_pipe_args(char **tokens, int tokens_len)
 	start = 0;
 	while (1)
 	{
-		end = find_pipe_operator(tokens + start);
-		manage_pipe(end);
-		if (!end)
-			end = tokens_len;
-		commands = sub_tokens(tokens, start, end);
+		command_len = find_pipe_operator(tokens + start);
+		manage_pipe(command_len);
+		if (!command_len)
+			command_len = tokens_len - start;
+		commands = sub_tokens(tokens, start, command_len);
 		status = exec(commands);
 		free_tokens(commands);
-		start = end + 1;
+		start += command_len + 1;
 		restore_std_fd(std_fd);
 		if (!status || start > tokens_len)
 			break ;
@@ -42,9 +42,11 @@ static int	parse_pipe_args(char **tokens, int tokens_len)
 int	parser(char **tokens)
 {
 	int	status;
+	int	len;
 
+	len = get_tokens_len(tokens);
 	if (find_pipe_operator(tokens))
-		status = parse_pipe_args(tokens, get_tokens_len(tokens));
+		status = parse_pipe_args(tokens, len);
 	else
 		status = exec(tokens);
 	return (status);
