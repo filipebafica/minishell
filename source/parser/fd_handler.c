@@ -1,31 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   find_operator.c                                    :+:      :+:    :+:   */
+/*   fd_handler.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/29 21:05:03 by fbafica           #+#    #+#             */
-/*   Updated: 2021/11/03 14:41:09 by fbafica          ###   ########.fr       */
+/*   Created: 2021/11/21 21:56:57 by fbafica           #+#    #+#             */
+/*   Updated: 2021/11/22 00:17:31 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	find_pipe_operator(char **tokens)
+void	replace_std_fd(int *new_fd)
 {
-	int	i;
+	dup2(new_fd[IN], STDIN_FILENO);
+	dup2(new_fd[OUT], STDOUT_FILENO);
+}
 
-	i = 0;
-	while (*tokens)
-	{
-		if ((*tokens)[0] == '|')
-			break ;
-		++i;
-		++tokens;
-	}
-	if (!*tokens)
-		return (0);
-	else
-		return (i);
+void	save_fd(int *fd_holder, int fd_in, int fd_out)
+{
+	fd_holder[IN] = dup(fd_in);
+	fd_holder[OUT] = dup(fd_out);
 }
