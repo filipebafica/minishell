@@ -6,7 +6,7 @@
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/29 16:53:28 by fbafica           #+#    #+#             */
-/*   Updated: 2021/11/22 21:59:40 by fbafica          ###   ########.fr       */
+/*   Updated: 2021/11/22 23:36:12 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,6 @@ int	parser(char **tokens, int tokens_len)
 	int	std_fd[2];
 
 	save_std_fd(std_fd);
-	if (find_pipe_operator(tokens, tokens_len))
-		status = exec_in_pipe(tokens, tokens_len, std_fd);
-	else
-		status = exec(tokens);
+	status = exec(tokens, tokens_len, std_fd);
 	return (status);
 }

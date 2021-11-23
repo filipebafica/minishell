@@ -6,7 +6,7 @@
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 16:45:04 by fbafica           #+#    #+#             */
-/*   Updated: 2021/11/22 22:24:21 by fbafica          ###   ########.fr       */
+/*   Updated: 2021/11/23 00:59:18 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,10 +52,10 @@ int	find_redirect_operator(char **tokens, int tokens_len)
 
 int	redirect(char **tokens, int tokens_len)
 {
-	int	first_opertaor;
 	int	i;
 
-	first_opertaor = find_redirect_operator(tokens, tokens_len);
+	if (!find_redirect_operator(tokens, tokens_len))
+		return (0);
 	i = 0;
 	while (i < tokens_len)
 	{
@@ -68,5 +68,5 @@ int	redirect(char **tokens, int tokens_len)
 		}
 		++i;
 	}
-	return (first_opertaor);
+	return (1);
 }

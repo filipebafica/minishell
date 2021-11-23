@@ -6,7 +6,7 @@
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/27 11:08:49 by fbafica           #+#    #+#             */
-/*   Updated: 2021/11/16 22:55:59 by fbafica          ###   ########.fr       */
+/*   Updated: 2021/11/23 01:19:12 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,10 +62,35 @@ static int	is_builtin(char **commands)
 	return (0);
 }
 
-int	exec(char **commands)
+static int	select_exec_type(char **commands)
 {
 	if (is_builtin(commands))
 		return (exec_builtin(commands));
 	else
 		return (exec_non_builtin(commands));
+}
+
+int	exec(char **tokens, int tokens_len, int *saved_fd)
+{
+	int		command_len;
+	int		start;
+	int		status;
+	char	**commands;
+
+	start = 0;
+	while (start < tokens_len && status)
+	{
+		command_len = find_pipe_operator(tokens + start, tokens_len - start);
+		create_pipe(command_len);
+		if (!command_len)
+			command_len = tokens_len - start;
+		if (redirect(tokens + start, command_len))
+			command_len = find_redirect_operator(tokens + start, command_len);
+		commands = sub_tokens(tokens, start, command_len);
+		status = select_exec_type(commands);
+		free_tokens(commands);
+		replace_std_fd(saved_fd);
+		start += command_len + 1;
+	}
+	return (status);
 }
