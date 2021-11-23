@@ -6,7 +6,7 @@
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 16:45:04 by fbafica           #+#    #+#             */
-/*   Updated: 2021/11/22 00:19:30 by fbafica          ###   ########.fr       */
+/*   Updated: 2021/11/22 22:24:21 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,14 +52,21 @@ int	find_redirect_operator(char **tokens, int tokens_len)
 
 int	redirect(char **tokens, int tokens_len)
 {
-	int	position;
+	int	first_opertaor;
+	int	i;
 
-	position = find_redirect_operator(tokens, tokens_len);
-	if (!ft_strcmp(tokens[position], ">") && \
-	ft_strcmp(tokens[position + 1], ">"))
-		redirect_out(tokens[position + 1], O_RDWR | O_CREAT);
-	else if (!ft_strcmp(tokens[position], ">") && \
-	!ft_strcmp(tokens[position + 1], ">"))
-		redirect_out(tokens[position + 2], O_RDWR | O_CREAT | O_APPEND);
-	return (position);
+	first_opertaor = find_redirect_operator(tokens, tokens_len);
+	i = 0;
+	while (i < tokens_len)
+	{
+		if (!ft_strcmp(tokens[i], ">") && ft_strcmp(tokens[i + 1], ">"))
+			redirect_out(tokens[i + 1], O_RDWR | O_CREAT | O_TRUNC);
+		else if (!ft_strcmp(tokens[i], ">") && !ft_strcmp(tokens[i + 1], ">"))
+		{
+			redirect_out(tokens[i + 2], O_RDWR | O_CREAT | O_APPEND);
+			++i;
+		}
+		++i;
+	}
+	return (first_opertaor);
 }

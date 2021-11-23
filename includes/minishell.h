@@ -6,7 +6,7 @@
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/08 14:49:38 by fbafica           #+#    #+#             */
-/*   Updated: 2021/11/21 23:47:55 by fbafica          ###   ########.fr       */
+/*   Updated: 2021/11/22 19:04:50 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ int					find_redirect_operator(char **tokens, int tokens_len);
 int					exec_in_pipe(char **tokens, int tokens_len, int *saved_fd);
 void				replace_std_fd(int *new_fd);
 int					redirect(char **tokens, int tokens_len);
-void				save_fd(int *fd_holder, int fd_in, int fd_out);
+void				save_std_fd(int *fd_holder);
 				/*
 				* BUILTINS 
 				*/
