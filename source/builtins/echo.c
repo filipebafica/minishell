@@ -6,13 +6,13 @@
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/25 16:36:05 by fbafica           #+#    #+#             */
-/*   Updated: 2021/11/12 15:02:34 by fbafica          ###   ########.fr       */
+/*   Updated: 2021/11/23 15:19:53 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-static int	get_var_len(char *arg, int start, int max_len)
+static int	get_var_len(char *arg, int start, int max_len) 
 {
 	int	i;
 
@@ -89,7 +89,9 @@ int	echo(char **commands)
 
 	commands_len = get_tokens_len(commands);
 	i = 1;
-	if (!ft_strcmp(commands[1], "-n"))
+	if (!commands[i])
+		return (1);
+	if (!ft_strcmp(commands[i], "-n"))
 		++i;
 	while (commands[i])
 	{
