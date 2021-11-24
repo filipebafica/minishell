@@ -6,7 +6,7 @@
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/08 14:49:38 by fbafica           #+#    #+#             */
-/*   Updated: 2021/11/23 00:55:58 by fbafica          ###   ########.fr       */
+/*   Updated: 2021/11/24 10:40:53 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 # include <unistd.h>
 # include <sys/wait.h>
 # include <sys/types.h>
+# include <sys/stat.h>
 # include <readline/readline.h>
 # include <readline/history.h>
 # include <fcntl.h>
@@ -86,13 +87,17 @@ void				print_table(t_table *table);
 				* PARSER 
 				*/
 int					parser(char **tokens, int tokens_len);
-int					exec(char **tokens, int tokens_len, int *saved_fd);
 void				replace_std_fd(int *new_fd);
 void				save_std_fd(int *fd_holder);
 int					find_pipe_operator(char **tokens, int tokens_len);
 int					find_redirect_operator(char **tokens, int tokens_len);
 int					redirect(char **tokens, int tokens_len);
 void				create_pipe(int is_pipe);
+				/*
+				* EXEC 
+				*/
+int					exec(char **tokens, int tokens_len, int *saved_fd);
+char				*get_command_and_path(char *command);
 				/*
 				* BUILTINS 
 				*/

@@ -6,13 +6,13 @@
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/25 16:36:05 by fbafica           #+#    #+#             */
-/*   Updated: 2021/11/23 15:19:53 by fbafica          ###   ########.fr       */
+/*   Updated: 2021/11/24 13:59:21 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-static int	get_var_len(char *arg, int start, int max_len) 
+static int	get_var_len(char *arg, int start, int max_len)
 {
 	int	i;
 
