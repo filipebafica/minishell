@@ -6,7 +6,7 @@
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/08 14:49:38 by fbafica           #+#    #+#             */
-/*   Updated: 2021/11/24 10:40:53 by fbafica          ###   ########.fr       */
+/*   Updated: 2021/11/24 22:40:06 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,13 +91,16 @@ void				replace_std_fd(int *new_fd);
 void				save_std_fd(int *fd_holder);
 int					find_pipe_operator(char **tokens, int tokens_len);
 int					find_redirect_operator(char **tokens, int tokens_len);
-int					redirect(char **tokens, int tokens_len);
+int					handle_redirect_files(char **tokens, int tokens_len);
 void				create_pipe(int is_pipe);
 				/*
 				* EXEC 
 				*/
 int					exec(char **tokens, int tokens_len, int *saved_fd);
 char				*get_command_and_path(char *command);
+int					exec_non_builtin(char **commands);
+int					is_builtin(char **commands);
+int					exec_builtin(char **commands);
 				/*
 				* BUILTINS 
 				*/

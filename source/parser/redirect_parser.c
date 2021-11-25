@@ -6,13 +6,13 @@
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 16:45:04 by fbafica           #+#    #+#             */
-/*   Updated: 2021/11/24 15:18:42 by fbafica          ###   ########.fr       */
+/*   Updated: 2021/11/24 22:47:39 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-static void	redirect_out(char *file_name, int flags)
+static int	redirect_out(char *file_name, int flags)
 {
 	int	file;
 
@@ -22,9 +22,15 @@ static void	redirect_out(char *file_name, int flags)
 		dup2(file, STDOUT_FILENO);
 		close(file);
 	}
+	else
+	{
+		perror("error");
+		return (0);
+	}
+	return (1);
 }
 
-static void	redirect_in(char *file_name, int flags)
+static int	redirect_in(char *file_name, int flags)
 {
 	int	file;
 
@@ -34,6 +40,12 @@ static void	redirect_in(char *file_name, int flags)
 		dup2(file, STDIN_FILENO);
 		close(file);
 	}
+	else
+	{
+		perror("error");
+		return (0);
+	}
+	return (1);
 }
 
 int	find_redirect_operator(char **tokens, int tokens_len)
@@ -58,24 +70,25 @@ int	find_redirect_operator(char **tokens, int tokens_len)
 	return (0);
 }
 
-int	redirect(char **tokens, int tokens_len)
+int	handle_redirect_files(char **tokens, int tokens_len)
 {
 	int	i;
+	int	check;
 
-	if (!find_redirect_operator(tokens, tokens_len))
-		return (0);
 	i = 0;
 	while (i < tokens_len)
 	{
 		if (!ft_strcmp(tokens[i], ">") && ft_strcmp(tokens[i + 1], ">"))
-			redirect_out(tokens[i + 1], O_RDWR | O_CREAT | O_TRUNC);
+			check = redirect_out(tokens[i + 1], O_RDWR | O_CREAT | O_TRUNC);
 		else if (!ft_strcmp(tokens[i], ">") && !ft_strcmp(tokens[i + 1], ">"))
 		{
-			redirect_out(tokens[i + 2], O_RDWR | O_CREAT | O_APPEND);
+			check = redirect_out(tokens[i + 2], O_RDWR | O_CREAT | O_APPEND);
 			++i;
 		}
 		else if (!ft_strcmp(tokens[i], "<") && ft_strcmp(tokens[i + 1], "<"))
-			redirect_in(tokens[i + 1], O_RDONLY);
+			check = redirect_in(tokens[i + 1], O_RDONLY);
+		if (!check)
+			return (check);
 		++i;
 	}
 	return (1);
