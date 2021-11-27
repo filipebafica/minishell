@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vars_utils2.c                                      :+:      :+:    :+:   */
+/*   vars_utils1.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/12 17:22:26 by fbafica           #+#    #+#             */
-/*   Updated: 2021/11/23 21:06:36 by fbafica          ###   ########.fr       */
+/*   Created: 2021/11/08 12:18:35 by fbafica           #+#    #+#             */
+/*   Updated: 2021/11/26 21:00:44 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static char	*join_key_value(int index)
 	return (pair);
 }
 
-char	**var_table_to_env_var(void)
+char	**env_var_table_to_env_var_arr(void)
 {
 	char	**env_vars;
 	char	*pair;
@@ -54,7 +54,7 @@ char	**var_table_to_env_var(void)
 	return (env_vars);
 }
 
-void	env_var_to_var_table(char **env_var)
+void	env_var_arr_to_env_var_table(char **env_var)
 {
 	char	*key;
 	char	*value;
@@ -69,4 +69,10 @@ void	env_var_to_var_table(char **env_var)
 		free(key);
 		++i;
 	}
+}
+
+void	create_var_tables(void)
+{
+	g_var_tables.loc_var = create_table(100);
+	g_var_tables.env_var = create_table(get_tokens_len(__environ) * 3);
 }

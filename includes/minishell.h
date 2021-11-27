@@ -6,7 +6,7 @@
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/08 14:49:38 by fbafica           #+#    #+#             */
-/*   Updated: 2021/11/24 22:40:06 by fbafica          ###   ########.fr       */
+/*   Updated: 2021/11/27 13:41:00 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,10 +52,13 @@ typedef struct s_var_tables
 				* INIT SHELL 
 				*/
 t_var_tables		g_var_tables;
-void				create_var_tables(void);
-void				env_var_to_var_table(char **env_var);
-char				**var_table_to_env_var(void);
 int					run_shell(void);
+				/*
+				* VARS 
+				*/
+void				create_var_tables(void);
+void				env_var_arr_to_env_var_table(char **env_var);
+char				**env_var_arr_table_to_env_var(void);
 				/*
 				* INPUT HANDLER 
 				*/
@@ -69,6 +72,8 @@ void				print_tokens(char **tokens);
 void				free_tokens(char **tokens);
 int					get_tokens_len(char **tokens);
 char				**sub_tokens(char **tokens, int start, int end);
+char				**join_tokens(char **tokens1, char **tokens2);
+void				delete_a_token(char ***tokens, int index);
 				/*
 				* HASH TABLE 
 				*/
@@ -97,6 +102,7 @@ void				create_pipe(int is_pipe);
 				* EXEC 
 				*/
 int					exec(char **tokens, int tokens_len, int *saved_fd);
+int					select_exec_type(char **commands);
 char				*get_command_and_path(char *command);
 int					exec_non_builtin(char **commands);
 int					is_builtin(char **commands);
@@ -104,6 +110,9 @@ int					exec_builtin(char **commands);
 				/*
 				* BUILTINS 
 				*/
+int					check_create_local_var(char **commands);
+int					create_local_vars(char **commands);
+int					expand_var(char *commands);
 int					echo(char **commands);
 int					cd(char **commands);
 char				*get_curr_dir(void);

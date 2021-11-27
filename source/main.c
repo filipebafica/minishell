@@ -6,7 +6,7 @@
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/08 14:49:23 by fbafica           #+#    #+#             */
-/*   Updated: 2021/11/23 00:07:13 by fbafica          ###   ########.fr       */
+/*   Updated: 2021/11/26 16:28:07 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	main(void)
 	int	status;
 
 	create_var_tables();
-	env_var_to_var_table(__environ);
+	env_var_arr_to_env_var_table(__environ);
 	status = 1;
 	while (status)
 		status = run_shell();

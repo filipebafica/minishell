@@ -6,7 +6,7 @@
 #    By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/08 14:36:44 by fbafica           #+#    #+#              #
-#    Updated: 2021/11/24 22:41:52 by fbafica          ###   ########.fr        #
+#    Updated: 2021/11/26 23:27:28 by fbafica          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,14 +21,15 @@ FT_PRINTF = ./ft_printf/ft_printf.a
 INCLUDE_PATH = ./includes/
 FLAGS = -g -fsanitize=address -Wall -Wextra -Werror -lreadline
 SOURCE_CODE = ./source/main.c \
-./source/shell/run_shell.c ./source/shell/vars_utils1.c ./source/shell/vars_utils2.c \
+./source/shell/run_shell.c \
+./source/vars/vars_utils1.c \
 ./source/parser/parser.c  ./source/parser/fd_handler.c ./source/parser/pipe_parser.c ./source/parser/redirect_parser.c \
 ./source/exec/exec.c ./source/exec/exec_builtin.c ./source/exec/exec_non_builtin.c ./source/exec/path_handler.c \
 ./source/builtins/echo.c ./source/builtins/cd.c ./source/builtins/pwd.c ./source/builtins/exit.c \
-./source/builtins/env.c ./source/builtins/export.c ./source/builtins/unset.c \
+./source/builtins/env.c ./source/builtins/export.c ./source/builtins/unset.c ./source/builtins/var_handler.c \
 ./source/input_handler/space_handler.c ./source/input_handler/quotes_check.c ./source/input_handler/get_tokens.c \
-./source/input_handler/tokens_utils.c ./source/input_handler/init_end_check.c ./source/input_handler/no_input_check.c \
-./source/input_handler/bad_redirect_check.c \
+./source/input_handler/tokens_utils1.c ./source/input_handler/tokens_utils2.c ./source/input_handler/init_end_check.c  \
+./source/input_handler/no_input_check.c ./source/input_handler/bad_redirect_check.c \
 ./source/hashtable/hash_function.c ./source/hashtable/ht_create.c ./source/hashtable/ht_insert.c ./source/hashtable/ht_delete.c \
 ./source/hashtable/ht_search.c ./source/hashtable/ht_free.c ./source/hashtable/ht_print.c \
 

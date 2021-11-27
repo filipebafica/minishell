@@ -6,7 +6,7 @@
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 14:46:30 by fbafica           #+#    #+#             */
-/*   Updated: 2021/11/24 12:22:27 by fbafica          ###   ########.fr       */
+/*   Updated: 2021/11/26 22:09:21 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,11 @@ static int	valid_input(char *input)
 	char	**tokens;
 	char	*mod_input;
 	int		status;
-	int		x;
 
 	mod_input = ft_strdup(input);
 	space_handler(&mod_input);
 	tokens = get_tokens(mod_input);
-	x = get_tokens_len(tokens);
-	status = parser(tokens, x);
+	status = parser(tokens, get_tokens_len(tokens));
 	free(mod_input);
 	free_tokens(tokens);
 	return (status);

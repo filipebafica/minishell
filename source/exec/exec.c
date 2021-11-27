@@ -6,13 +6,13 @@
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/27 11:08:49 by fbafica           #+#    #+#             */
-/*   Updated: 2021/11/24 22:52:55 by fbafica          ###   ########.fr       */
+/*   Updated: 2021/11/27 14:05:56 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-static int	select_exec_type(char **commands)
+int	select_exec_type(char **commands)
 {
 	if (!*commands)
 		return (1);
