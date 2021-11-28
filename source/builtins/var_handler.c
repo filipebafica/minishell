@@ -6,7 +6,7 @@
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/26 21:05:47 by fbafica           #+#    #+#             */
-/*   Updated: 2021/11/27 22:49:28 by fbafica          ###   ########.fr       */
+/*   Updated: 2021/11/28 00:17:15 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,14 @@ int	expand_var(char *commands)
 	var_value = search_a_key(g_var_tables.env_var, ++commands);
 	if (!var_value)
 		var_value = search_a_key(g_var_tables.loc_var, commands);
-	new_command = malloc(sizeof(char *) * 2);
-	new_command[0] = ft_strdup(var_value);
-	new_command[1] = (char *) '\0';
-	select_exec_type(new_command);
-	free_tokens(new_command);
+	if (var_value)
+	{
+		new_command = malloc(sizeof(char *) * 2);
+		new_command[0] = ft_strdup(var_value);
+		new_command[1] = (char *) '\0';
+		select_exec_type(new_command, 0);
+		free_tokens(new_command);
+	}
 	return (1);
 }
 

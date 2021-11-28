@@ -6,7 +6,7 @@
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 21:57:29 by fbafica           #+#    #+#             */
-/*   Updated: 2021/11/27 14:04:39 by fbafica          ###   ########.fr       */
+/*   Updated: 2021/11/28 00:11:36 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	exec_builtin(char **commands)
 	return (1);
 }
 
-int	is_builtin(char **commands)
+int	is_builtin(char **commands, int pipe_flag)
 {
 	if (*commands[0] == '$')
 		return (1);
@@ -45,7 +45,7 @@ int	is_builtin(char **commands)
 		return (1);
 	else if (!ft_strcmp(*commands, "pwd"))
 		return (1);
-	else if (!ft_strcmp(*commands, "export"))
+	else if (!ft_strcmp(*commands, "export") && !pipe_flag)
 		return (1);
 	else if (!ft_strcmp(*commands, "unset"))
 		return (1);
@@ -53,7 +53,7 @@ int	is_builtin(char **commands)
 		return (1);
 	else if (!ft_strcmp(*commands, "exit"))
 		return (1);
-	else if (check_create_local_var(commands))
+	else if (check_create_local_var(commands) && !pipe_flag)
 		return (1);
 	return (0);
 }
