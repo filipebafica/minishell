@@ -6,7 +6,7 @@
 #    By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/08 14:36:44 by fbafica           #+#    #+#              #
-#    Updated: 2021/11/26 23:27:28 by fbafica          ###   ########.fr        #
+#    Updated: 2021/11/27 21:40:39 by fbafica          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,7 @@ SOURCE_CODE = ./source/main.c \
 ./source/builtins/env.c ./source/builtins/export.c ./source/builtins/unset.c ./source/builtins/var_handler.c \
 ./source/input_handler/space_handler.c ./source/input_handler/quotes_check.c ./source/input_handler/get_tokens.c \
 ./source/input_handler/tokens_utils1.c ./source/input_handler/tokens_utils2.c ./source/input_handler/init_end_check.c  \
-./source/input_handler/no_input_check.c ./source/input_handler/bad_redirect_check.c \
+./source/input_handler/no_input_check.c ./source/input_handler/bad_redirect_check.c ./source/input_handler/bad_equal_check.c \
 ./source/hashtable/hash_function.c ./source/hashtable/ht_create.c ./source/hashtable/ht_insert.c ./source/hashtable/ht_delete.c \
 ./source/hashtable/ht_search.c ./source/hashtable/ht_free.c ./source/hashtable/ht_print.c \
 

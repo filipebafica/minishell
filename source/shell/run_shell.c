@@ -6,7 +6,7 @@
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 14:46:30 by fbafica           #+#    #+#             */
-/*   Updated: 2021/11/26 22:09:21 by fbafica          ###   ########.fr       */
+/*   Updated: 2021/11/27 22:35:38 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int	run_shell(void)
 	if (no_input_check(input))
 		status = 1;
 	else if (!quotes_check(input) || !init_end_check(input) \
-	|| !bad_redirect_check(input))
+	|| !bad_redirect_check(input) || !bad_equal_check(input))
 		status = invalid_input();
 	else
 		status = valid_input(input);

@@ -6,7 +6,7 @@
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/15 16:57:08 by fbafica           #+#    #+#             */
-/*   Updated: 2021/11/21 23:06:07 by fbafica          ###   ########.fr       */
+/*   Updated: 2021/11/27 20:11:58 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	init_end_check(char *input)
 	int		len;
 	int		i;
 
-	set = "=><|";
+	set = "|";
 	len = ft_strlen(input);
 	i = 0;
 	while (set[i] != '\0')

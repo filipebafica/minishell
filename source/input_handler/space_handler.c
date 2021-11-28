@@ -6,7 +6,7 @@
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 15:45:03 by fbafica           #+#    #+#             */
-/*   Updated: 2021/11/12 23:54:20 by fbafica          ###   ########.fr       */
+/*   Updated: 2021/11/27 20:08:47 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	space_handler(char **input)
 	int		i;
 	int		j;
 
-	set = "=><|";
+	set = "><|";
 	i = 1;
 	while ((*input)[i] != '\0')
 	{

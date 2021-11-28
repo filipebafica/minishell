@@ -6,7 +6,7 @@
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/26 21:05:47 by fbafica           #+#    #+#             */
-/*   Updated: 2021/11/27 14:39:39 by fbafica          ###   ########.fr       */
+/*   Updated: 2021/11/27 22:49:28 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,24 +30,21 @@ int	expand_var(char *commands)
 
 int	create_local_vars(char **commands)
 {
-	int	i;
-	int	j;
+	char	*key;
+	int		equal_sign;
+	int		i;
 
 	i = 0;
-	j = 0;
 	while (commands[i])
 	{
-		if (ft_strcmp(commands[i], "=") && commands[i + 1] \
-		&& !ft_strcmp(commands[i + 1], "="))
-			j = i;
-		++i;
-		while (commands[i] && !ft_strcmp(commands[i], "="))
-			++i;
-		if (commands[i] && commands[j])
+		equal_sign = ft_strchrlen(commands[i], '=');
+		if (equal_sign)
 		{
-			table_insert_pair(g_var_tables.loc_var, commands[j], commands[i]);
-			++i;
+			key = ft_substr(commands[i], 0, equal_sign);
+			table_insert_pair(g_var_tables.loc_var, key, commands[i] + equal_sign + 1);
+			free(key);
 		}
+		++i;
 	}
 	return (1);
 }
