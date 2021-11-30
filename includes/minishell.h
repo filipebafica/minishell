@@ -6,7 +6,7 @@
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/08 14:49:38 by fbafica           #+#    #+#             */
-/*   Updated: 2021/11/30 13:12:33 by fbafica          ###   ########.fr       */
+/*   Updated: 2021/11/30 15:43:34 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,8 @@ char				**env_var_arr_table_to_env_var(void);
 				* INPUT HANDLER 
 				*/
 int					no_input_check(char *input);
-int					init_end_check(char *input);
+int					init_check(char *input);
+int					end_check(char *input);
 int					bad_redirect_check(char *input);
 int					bad_equal_check(char *input);
 void				space_handler(char **input);

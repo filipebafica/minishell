@@ -6,7 +6,7 @@
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/29 13:10:38 by fbafica           #+#    #+#             */
-/*   Updated: 2021/11/30 13:23:38 by fbafica          ###   ########.fr       */
+/*   Updated: 2021/11/30 15:31:03 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,6 @@ int	here_doc(char *eof_token)
 	write_on_file(tmp_file, eof_token);
 	tmp_file = open(TMP_FILE, O_RDONLY);
 	dup2(tmp_file, STDIN_FILENO);
-	clsoe(tmp_file);
+	close(tmp_file);
 	return (1);
 }
