@@ -6,7 +6,7 @@
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/08 14:49:38 by fbafica           #+#    #+#             */
-/*   Updated: 2021/11/28 00:24:58 by fbafica          ###   ########.fr       */
+/*   Updated: 2021/11/30 13:12:33 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define MINISHELL_H
 # define IN 0
 # define OUT 1
+# define TMP_FILE "/tmp/tmp_heredoc_minishell"
 # define COLOR_RED "\x1b[1;31m"
 # define COLOR_RESET "\x1b[0m"
 # include "libft.h"
@@ -99,6 +100,7 @@ void				save_std_fd(int *fd_holder);
 int					find_pipe_operator(char **tokens, int tokens_len);
 int					find_redirect_operator(char **tokens, int tokens_len);
 int					handle_redirect_files(char **tokens, int tokens_len);
+int					here_doc(char *eof_token);
 void				create_pipe(int is_pipe);
 				/*
 				* EXEC 

@@ -6,7 +6,7 @@
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/26 21:05:47 by fbafica           #+#    #+#             */
-/*   Updated: 2021/11/28 00:17:15 by fbafica          ###   ########.fr       */
+/*   Updated: 2021/11/30 13:24:16 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,8 @@ int	create_local_vars(char **commands)
 		if (equal_sign)
 		{
 			key = ft_substr(commands[i], 0, equal_sign);
-			table_insert_pair(g_var_tables.loc_var, key, commands[i] + equal_sign + 1);
+			table_insert_pair(g_var_tables.loc_var, key, \
+			commands[i] + equal_sign + 1);
 			free(key);
 		}
 		++i;

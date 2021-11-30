@@ -6,7 +6,7 @@
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 16:45:04 by fbafica           #+#    #+#             */
-/*   Updated: 2021/11/27 20:55:10 by fbafica          ###   ########.fr       */
+/*   Updated: 2021/11/29 20:57:28 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,11 @@ int	handle_redirect_files(char **tokens, int tokens_len)
 		}
 		else if (!ft_strcmp(tokens[i], "<") && ft_strcmp(tokens[i + 1], "<"))
 			check = redirect_in(tokens[i + 1], O_RDONLY);
+		else if (!ft_strcmp(tokens[i], "<") && !ft_strcmp(tokens[i + 1], "<"))
+		{
+			check = here_doc(tokens[i + 2]);
+			++i;
+		}
 		if (!check)
 			return (check);
 		++i;
