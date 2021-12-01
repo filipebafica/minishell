@@ -6,7 +6,7 @@
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/08 14:49:38 by fbafica           #+#    #+#             */
-/*   Updated: 2021/11/30 15:43:34 by fbafica          ###   ########.fr       */
+/*   Updated: 2021/12/01 00:09:18 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,16 +43,17 @@ typedef struct s_table
 	int		size;
 }	t_table;
 
-typedef struct s_var_tables
+typedef struct s_minishell
 {
 	t_table	*loc_var;
 	t_table	*env_var;
-}	t_var_tables;
+	int		std_fd[2];
+}	t_minishell;
 
 				/*
 				* INIT SHELL 
 				*/
-t_var_tables		g_var_tables;
+t_minishell		g_minishell;
 int					run_shell(void);
 				/*
 				* VARS 
@@ -106,7 +107,7 @@ void				create_pipe(int is_pipe);
 				/*
 				* EXEC 
 				*/
-int					exec(char **tokens, int tokens_len, int *saved_fd);
+int					exec(char **tokens, int tokens_len);
 int					select_exec_type(char **commands, int pipe_flag);
 char				*get_command_and_path(char *command);
 int					exec_non_builtin(char **commands);

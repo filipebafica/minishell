@@ -6,7 +6,7 @@
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/27 11:08:49 by fbafica           #+#    #+#             */
-/*   Updated: 2021/11/29 21:29:59 by fbafica          ###   ########.fr       */
+/*   Updated: 2021/11/30 22:53:25 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ static int	get_cmd_len(char **tokens, int tokens_len, int start)
 	return (cmd_len);
 }
 
-int	exec(char **tokens, int tokens_len, int *saved_fd)
+int	exec(char **tokens, int tokens_len)
 {
 	int		cmd_len;
 	int		sub_cmd_len;
@@ -65,7 +65,7 @@ int	exec(char **tokens, int tokens_len, int *saved_fd)
 		commands = sub_tokens(tokens, start, sub_cmd_len);
 		status = select_exec_type(commands, check_a_token(tokens, "|"));
 		free_tokens(commands);
-		replace_std_fd(saved_fd);
+		replace_std_fd(g_minishell.std_fd);
 		start += cmd_len + 1;
 		sub_cmd_len = 0;
 	}

@@ -6,7 +6,7 @@
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/29 13:10:38 by fbafica           #+#    #+#             */
-/*   Updated: 2021/11/30 15:31:03 by fbafica          ###   ########.fr       */
+/*   Updated: 2021/12/01 00:09:33 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,10 @@ static char	*get_user_input(char *eof_token)
 {
 	char	*buffer;
 	char	*input;
+	int		tmp_fd[2];
 
+	save_std_fd(tmp_fd);
+	replace_std_fd(g_minishell.std_fd);
 	buffer = ft_calloc(1, 1);
 	while (1)
 	{
@@ -42,6 +45,7 @@ static char	*get_user_input(char *eof_token)
 		update_buffer(&buffer, input);
 		free(input);
 	}
+	replace_std_fd(tmp_fd);
 	return (buffer);
 }
 

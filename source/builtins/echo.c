@@ -6,7 +6,7 @@
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/25 16:36:05 by fbafica           #+#    #+#             */
-/*   Updated: 2021/11/24 13:59:21 by fbafica          ###   ########.fr       */
+/*   Updated: 2021/11/30 22:50:13 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ static int	print_var(char *arg, int start, int arg_len)
 	++start;
 	var_len = get_var_len(arg, start, arg_len);
 	key = ft_substr(arg, start, var_len);
-	print_search(g_var_tables.env_var, key);
-	print_search(g_var_tables.loc_var, key);
+	print_search(g_minishell.env_var, key);
+	print_search(g_minishell.loc_var, key);
 	free(key);
 	return (var_len);
 }

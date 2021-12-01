@@ -6,7 +6,7 @@
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/26 21:05:47 by fbafica           #+#    #+#             */
-/*   Updated: 2021/11/30 13:24:16 by fbafica          ###   ########.fr       */
+/*   Updated: 2021/11/30 22:51:14 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@ int	expand_var(char *commands)
 	char	**new_command;
 	char	*var_value;
 
-	var_value = search_a_key(g_var_tables.env_var, ++commands);
+	var_value = search_a_key(g_minishell.env_var, ++commands);
 	if (!var_value)
-		var_value = search_a_key(g_var_tables.loc_var, commands);
+		var_value = search_a_key(g_minishell.loc_var, commands);
 	if (var_value)
 	{
 		new_command = malloc(sizeof(char *) * 2);
@@ -44,7 +44,7 @@ int	create_local_vars(char **commands)
 		if (equal_sign)
 		{
 			key = ft_substr(commands[i], 0, equal_sign);
-			table_insert_pair(g_var_tables.loc_var, key, \
+			table_insert_pair(g_minishell.loc_var, key, \
 			commands[i] + equal_sign + 1);
 			free(key);
 		}

@@ -6,7 +6,7 @@
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 14:29:11 by fbafica           #+#    #+#             */
-/*   Updated: 2021/11/12 14:32:15 by fbafica          ###   ########.fr       */
+/*   Updated: 2021/11/30 22:50:24 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,6 @@
 
 int	env(void)
 {
-	print_table(g_var_tables.env_var);
+	print_table(g_minishell.env_var);
 	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 17:40:49 by fbafica           #+#    #+#             */
-/*   Updated: 2021/11/24 13:17:36 by fbafica          ###   ########.fr       */
+/*   Updated: 2021/11/30 22:51:51 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static char	**get_path_tokens(void)
 	char	*path_var;
 	char	**path_tokens;
 
-	path_var = search_a_key(g_var_tables.env_var, "PATH");
+	path_var = search_a_key(g_minishell.env_var, "PATH");
 	path_tokens = ft_split(path_var, ':');
 	return (path_tokens);
 }

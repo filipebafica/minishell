@@ -6,7 +6,7 @@
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 18:48:25 by fbafica           #+#    #+#             */
-/*   Updated: 2021/11/12 20:43:07 by fbafica          ###   ########.fr       */
+/*   Updated: 2021/11/30 22:50:42 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 static void	handle_env_var(char *var_key, char *var_value)
 {
-	table_insert_pair(g_var_tables.env_var, var_key, var_value);
-	if (search_a_key(g_var_tables.loc_var, var_key))
-		table_delete_pair(g_var_tables.loc_var, var_key);
+	table_insert_pair(g_minishell.env_var, var_key, var_value);
+	if (search_a_key(g_minishell.loc_var, var_key))
+		table_delete_pair(g_minishell.loc_var, var_key);
 }
 
 int	export_var(char **commands)
