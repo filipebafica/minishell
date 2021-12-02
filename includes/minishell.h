@@ -6,7 +6,7 @@
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/08 14:49:38 by fbafica           #+#    #+#             */
-/*   Updated: 2021/12/01 21:18:53 by fbafica          ###   ########.fr       */
+/*   Updated: 2021/12/02 14:35:36 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int					run_shell(void);
 				*/
 void				create_var_tables(void);
 void				env_var_arr_to_env_var_table(char **env_var);
-char				**env_var_arr_table_to_env_var(void);
+char				**env_var_table_to_env_var_arr(void);
 				/*
 				* INPUT HANDLER 
 				*/
@@ -72,7 +72,7 @@ int					bad_equal_check(char *input);
 void				space_handler(char **input);
 int					quotes_check(char *input);
 char				**get_tokens(char *s);
-void				print_tokens(char **tokens);
+void				print_tokens(char *prefix, char **tokens);
 void				free_tokens(char **tokens);
 int					get_tokens_len(char **tokens);
 char				**sub_tokens(char **tokens, int start, int end);
@@ -125,6 +125,6 @@ char				*get_curr_dir(void);
 int					pwd(void);
 int					exit_shell(char **commands);
 int					env(void);
-int					export_var(char **commands);
+int					export_func(char **commands);
 int					unset_var(char **commands);
 #endif
