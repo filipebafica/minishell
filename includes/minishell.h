@@ -6,7 +6,7 @@
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/08 14:49:38 by fbafica           #+#    #+#             */
-/*   Updated: 2021/12/02 14:35:36 by fbafica          ###   ########.fr       */
+/*   Updated: 2021/12/02 16:38:40 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ int					bad_equal_check(char *input);
 void				space_handler(char **input);
 int					quotes_check(char *input);
 char				**get_tokens(char *s);
-void				print_tokens(char *prefix, char **tokens);
+void				print_tokens(char **tokens);
 void				free_tokens(char **tokens);
 int					get_tokens_len(char **tokens);
 char				**sub_tokens(char **tokens, int start, int end);
