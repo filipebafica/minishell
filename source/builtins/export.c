@@ -6,7 +6,7 @@
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 18:48:25 by fbafica           #+#    #+#             */
-/*   Updated: 2021/11/30 22:50:42 by fbafica          ###   ########.fr       */
+/*   Updated: 2021/12/01 21:50:36 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,6 @@ int	export_var(char **commands)
 			handle_env_var(commands[i - 1], commands[i + 1]);
 		++i;
 	}
+	table_insert_pair(g_minishell.loc_var, "?", "0");
 	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 21:58:30 by fbafica           #+#    #+#             */
-/*   Updated: 2021/11/29 22:56:57 by fbafica          ###   ########.fr       */
+/*   Updated: 2021/12/01 22:20:09 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 int	exec_non_builtin(char **commands)
 {
 	int		pid;
+	int		status;
+	char	*error_status;
 	char	*command_and_path;
 
 	pid = fork();
@@ -26,6 +28,11 @@ int	exec_non_builtin(char **commands)
 		exit(EXIT_FAILURE);
 	}
 	else
-		wait(NULL);
+		waitpid(pid, &status, 0);
+	error_status = "0";
+	if (WIFEXITED(status))
+		error_status = ft_itoa(WEXITSTATUS(status));
+	table_insert_pair(g_minishell.loc_var, "?", error_status);
+	free(error_status);
 	return (1);
 }

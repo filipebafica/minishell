@@ -6,7 +6,7 @@
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/08 14:49:38 by fbafica           #+#    #+#             */
-/*   Updated: 2021/12/01 00:09:18 by fbafica          ###   ########.fr       */
+/*   Updated: 2021/12/01 21:18:53 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,7 +123,7 @@ int					echo(char **commands);
 int					cd(char **commands);
 char				*get_curr_dir(void);
 int					pwd(void);
-int					exit_shell(void);
+int					exit_shell(char **commands);
 int					env(void);
 int					export_var(char **commands);
 int					unset_var(char **commands);

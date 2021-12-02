@@ -6,7 +6,7 @@
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/25 16:36:05 by fbafica           #+#    #+#             */
-/*   Updated: 2021/11/30 22:50:13 by fbafica          ###   ########.fr       */
+/*   Updated: 2021/12/01 22:02:48 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,8 +89,6 @@ int	echo(char **commands)
 
 	commands_len = get_tokens_len(commands);
 	i = 1;
-	if (!commands[i])
-		return (1);
 	if (!ft_strcmp(commands[i], "-n"))
 		++i;
 	while (commands[i])
@@ -102,5 +100,6 @@ int	echo(char **commands)
 	}
 	if (ft_strcmp(commands[1], "-n"))
 		ft_printf("\n");
+	table_insert_pair(g_minishell.loc_var, "?", "0");
 	return (1);
 }
