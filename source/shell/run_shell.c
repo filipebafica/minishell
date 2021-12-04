@@ -6,7 +6,7 @@
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 14:46:30 by fbafica           #+#    #+#             */
-/*   Updated: 2021/12/01 21:55:47 by fbafica          ###   ########.fr       */
+/*   Updated: 2021/12/03 21:16:22 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,19 +30,30 @@ static int	valid_input(char *input)
 static int	invalid_input(void)
 {
 	ft_putendl_fd("bad syntax", 1);
-	table_insert_pair(g_minishell.loc_var, "?", "1");
+	table_insert_pair(g_minishell.error_status, "?", "1");
 	return (1);
+}
+
+char	*create_prompt(void)
+{
+	char	*curr_dir;
+	char	*prompt;
+
+	curr_dir = get_curr_dir();
+	prompt = ft_strjoin(curr_dir, "$ ");
+	free(curr_dir);
+	return (prompt);
 }
 
 int	run_shell(void)
 {
 	char	*input;
 	char	*prompt;
-	char	*curr_dir;
 	int		status;
 
-	curr_dir = get_curr_dir();
-	prompt = ft_strjoin(curr_dir, "$ ");
+	define_signals();
+
+	prompt = create_prompt();
 	input = readline(prompt);
 	add_history(input);
 	if (no_input_check(input))
@@ -54,7 +65,6 @@ int	run_shell(void)
 	else
 		status = valid_input(input);
 	free(input);
-	free(curr_dir);
 	free(prompt);
 	return (status);
 }

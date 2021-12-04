@@ -6,47 +6,48 @@
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 12:18:35 by fbafica           #+#    #+#             */
-/*   Updated: 2021/11/30 22:48:03 by fbafica          ###   ########.fr       */
+/*   Updated: 2021/12/03 19:14:33 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-static char	*join_key_value(int index)
+static char	*join_key_value(char *key, char *value)
 {
-	char	*key;
-	char	*value;
 	char	*tmp;
 	char	*pair;
 
-	tmp = ft_strdup(g_minishell.env_var->pairs[index]->key);
-	key = ft_strjoin(tmp, "=");
-	value = ft_strdup(g_minishell.env_var->pairs[index]->value);
-	pair = ft_strjoin(key, value);
+	tmp = ft_strjoin(key, "=");
+	pair = ft_strjoin(tmp, value);
 	free(tmp);
-	free(key);
-	free(value);
 	return (pair);
 }
 
 char	**env_var_table_to_env_var_arr(void)
 {
+	t_pair	*tmp;
 	char	**env_vars;
 	char	*pair;
 	int		i;
 	int		j;
 
-	env_vars = malloc((g_minishell.env_var->count + 1) * sizeof(char *));
+	env_vars = malloc((g_minishell.env_var->count + \
+	g_minishell.env_var->separate_chain + 1) * sizeof(char *));
 	i = 0;
 	j = 0;
 	while (i < g_minishell.env_var->size)
 	{
 		if (g_minishell.env_var->pairs[i])
 		{
-			pair = join_key_value(i);
-			env_vars[j] = ft_strdup(pair);
-			free(pair);
-			++j;
+			tmp = g_minishell.env_var->pairs[i];
+			while (tmp)
+			{
+				pair = join_key_value(tmp->key, tmp->value);
+				env_vars[j] = ft_strdup(pair);
+				free(pair);
+				++j;
+				tmp = tmp->next;
+			}
 		}
 		++i;
 	}
@@ -75,4 +76,5 @@ void	create_var_tables(void)
 {
 	g_minishell.loc_var = create_table(100);
 	g_minishell.env_var = create_table(get_tokens_len(__environ) * 3);
+	g_minishell.error_status = create_table(1);
 }

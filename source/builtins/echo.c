@@ -6,7 +6,7 @@
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/25 16:36:05 by fbafica           #+#    #+#             */
-/*   Updated: 2021/12/01 22:02:48 by fbafica          ###   ########.fr       */
+/*   Updated: 2021/12/03 19:16:02 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ static int	print_var(char *arg, int start, int arg_len)
 	key = ft_substr(arg, start, var_len);
 	print_search(g_minishell.env_var, key);
 	print_search(g_minishell.loc_var, key);
+	print_search(g_minishell.error_status, key);
 	free(key);
 	return (var_len);
 }
@@ -100,6 +101,6 @@ int	echo(char **commands)
 	}
 	if (ft_strcmp(commands[1], "-n"))
 		ft_printf("\n");
-	table_insert_pair(g_minishell.loc_var, "?", "0");
+	table_insert_pair(g_minishell.error_status, "?", "0");
 	return (1);
 }

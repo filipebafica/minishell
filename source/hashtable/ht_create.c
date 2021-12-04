@@ -30,6 +30,7 @@ t_table	*create_table(int size)
 	table = ft_calloc(1, sizeof(t_table));
 	table->size = size;
 	table->count = 0;
+	table->separate_chain = 0;
 	table->pairs = ft_calloc(size, sizeof(t_pair));
 	return (table);
 }

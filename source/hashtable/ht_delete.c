@@ -6,7 +6,7 @@
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/17 17:22:23 by fbafica           #+#    #+#             */
-/*   Updated: 2021/10/25 17:44:15 by fbafica          ###   ########.fr       */
+/*   Updated: 2021/12/03 16:46:25 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ static void	delete_in_a_linked_pair(t_table *table, t_pair *curr, char *key)
 		table->pairs[index] = curr->next;
 		free_pair(curr);
 	}
+	table->separate_chain--;
 }
 
 void	table_delete_pair(t_table *table, char *key)
@@ -51,6 +52,7 @@ void	table_delete_pair(t_table *table, char *key)
 	{
 		free_pair(curr);
 		table->pairs[index] = NULL;
+		table->count--;
 	}
 	else if (curr->next != NULL)
 		delete_in_a_linked_pair(table, curr, key);

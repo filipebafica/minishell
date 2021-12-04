@@ -6,7 +6,7 @@
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 18:48:25 by fbafica           #+#    #+#             */
-/*   Updated: 2021/12/02 17:10:53 by fbafica          ###   ########.fr       */
+/*   Updated: 2021/12/03 19:17:05 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,6 @@ int	export_func(char **commands)
 		status = export_sorted_vars();
 	else
 		status = export_var(commands);
-	table_insert_pair(g_minishell.loc_var, "?", "0");
+	table_insert_pair(g_minishell.error_status, "?", "0");
 	return (status);
 }

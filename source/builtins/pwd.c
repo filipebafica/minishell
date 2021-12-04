@@ -6,7 +6,7 @@
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/11 16:57:13 by fbafica           #+#    #+#             */
-/*   Updated: 2021/12/01 21:52:15 by fbafica          ###   ########.fr       */
+/*   Updated: 2021/12/03 19:17:35 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,6 @@ int	pwd(void)
 	curr_dir = get_curr_dir();
 	ft_putendl_fd(curr_dir, 1);
 	free(curr_dir);
-	table_insert_pair(g_minishell.loc_var, "?", "0");
+	table_insert_pair(g_minishell.error_status, "?", "0");
 	return (1);
 }

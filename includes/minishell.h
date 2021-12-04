@@ -6,7 +6,7 @@
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/08 14:49:38 by fbafica           #+#    #+#             */
-/*   Updated: 2021/12/02 16:38:40 by fbafica          ###   ########.fr       */
+/*   Updated: 2021/12/03 21:16:44 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@
 # include <readline/readline.h>
 # include <readline/history.h>
 # include <fcntl.h>
+# include <signal.h>
 
 typedef struct s_pair
 {
@@ -40,6 +41,7 @@ typedef struct s_table
 {
 	t_pair	**pairs;
 	int		count;
+	int		separate_chain;
 	int		size;
 }	t_table;
 
@@ -47,6 +49,7 @@ typedef struct s_minishell
 {
 	t_table	*loc_var;
 	t_table	*env_var;
+	t_table	*error_status;
 	int		std_fd[2];
 }	t_minishell;
 
@@ -55,6 +58,11 @@ typedef struct s_minishell
 				*/
 t_minishell		g_minishell;
 int					run_shell(void);
+char				*create_prompt(void);
+				/*
+				* SIGNALS 
+				*/
+void				define_signals(void);
 				/*
 				* VARS 
 				*/

@@ -1,25 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   exit.c                                             :+:      :+:    :+:   */
+/*   signals.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/11 18:52:38 by fbafica           #+#    #+#             */
-/*   Updated: 2021/12/03 19:16:55 by fbafica          ###   ########.fr       */
+/*   Created: 2021/12/03 19:27:50 by fbafica           #+#    #+#             */
+/*   Updated: 2021/12/03 22:14:02 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	exit_shell(char **commands)
+static void	handle_singint(int signal)
 {
-	if (get_tokens_len(commands) > 1)
+	char	*prompt;
+
+	(void)signal;
+	if (isatty(STDIN_FILENO))
 	{
-		ft_putendl_fd("exit: too many arguments", STDERR_FILENO);
-		table_insert_pair(g_minishell.error_status, "?", "1");
-		return (1);
+		prompt = create_prompt();
+		ft_printf("\n%s", prompt);
+		free(prompt);
 	}
-	table_insert_pair(g_minishell.error_status, "?", "0");
-	return (0);
+}
+
+void	define_signals(void)
+{
+	signal(SIGINT, handle_singint);
+	signal(SIGQUIT, SIG_IGN);
 }
