@@ -6,7 +6,7 @@
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/08 14:49:38 by fbafica           #+#    #+#             */
-/*   Updated: 2021/12/03 21:16:44 by fbafica          ###   ########.fr       */
+/*   Updated: 2021/12/04 19:02:28 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,8 @@ char				*create_prompt(void);
 				/*
 				* SIGNALS 
 				*/
-void				define_signals(void);
+void				signals_new_prompt(void);
+void				signals_empty_line(void);
 				/*
 				* VARS 
 				*/

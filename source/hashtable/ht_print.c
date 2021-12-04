@@ -6,7 +6,7 @@
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/18 22:07:59 by fbafica           #+#    #+#             */
-/*   Updated: 2021/12/03 16:52:56 by fbafica          ###   ########.fr       */
+/*   Updated: 2021/12/04 18:10:26 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	print_search(t_table *table, char *key)
 void	print_table(t_table *table)
 {
 	t_pair	*tmp;
-	int	i;
+	int		i;
 
 	i = 0;
 	while (i < table->size)
