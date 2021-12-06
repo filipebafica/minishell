@@ -6,7 +6,7 @@
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 17:22:26 by fbafica           #+#    #+#             */
-/*   Updated: 2021/11/28 00:02:45 by fbafica          ###   ########.fr       */
+/*   Updated: 2021/12/06 17:20:05 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,12 @@ void	delete_a_token(char ***tokens, int index)
 	*tokens = join_tokens(tmp_1, tmp_2);
 	free_tokens(tmp_1);
 	free_tokens(tmp_2);
+}
+
+void	replace_a_token(char ***tokens, int index, char *new_token)
+{
+	free((*tokens)[index]);
+	(*tokens)[index] = ft_strdup(new_token);
 }
 
 int	check_a_token(char **tokens, char *token_to_check)

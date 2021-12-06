@@ -6,7 +6,7 @@
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/08 14:49:38 by fbafica           #+#    #+#             */
-/*   Updated: 2021/12/04 19:02:28 by fbafica          ###   ########.fr       */
+/*   Updated: 2021/12/06 17:20:16 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,9 @@ int					get_tokens_len(char **tokens);
 char				**sub_tokens(char **tokens, int start, int end);
 char				**join_tokens(char **tokens1, char **tokens2);
 void				delete_a_token(char ***tokens, int index);
+void				replace_a_token(char ***tokens, int index, char *new_token);
 int					check_a_token(char **tokens, char *token_to_check);
+void				expand_var_(char **tokens);
 				/*
 				* HASH TABLE 
 				*/
