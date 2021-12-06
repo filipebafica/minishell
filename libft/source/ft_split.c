@@ -6,7 +6,7 @@
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/20 15:27:23 by fbafica           #+#    #+#             */
-/*   Updated: 2021/10/25 16:58:19 by fbafica          ###   ########.fr       */
+/*   Updated: 2021/12/05 21:10:09 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,6 +104,8 @@ char	**ft_split(char const *s, char c)
 	int		*columns;
 	char	**array;
 
+	if (!s)
+		return (NULL);
 	rows = get_rows(s, c);
 	get_columns(s, c, rows, &columns);
 	allocate(rows, columns, &array);

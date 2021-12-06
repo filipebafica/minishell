@@ -6,7 +6,7 @@
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 17:40:49 by fbafica           #+#    #+#             */
-/*   Updated: 2021/11/30 22:51:51 by fbafica          ###   ########.fr       */
+/*   Updated: 2021/12/05 21:11:07 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ char	*get_command_and_path(char *command)
 
 	path_tokens = get_path_tokens();
 	i = 0;
-	while (path_tokens[i])
+	while (path_tokens && path_tokens[i])
 	{
 		tmp = ft_strjoin(path_tokens[i], "/");
 		full_command = ft_strjoin(tmp, command);
