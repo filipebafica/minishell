@@ -6,7 +6,7 @@
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 21:58:30 by fbafica           #+#    #+#             */
-/*   Updated: 2021/12/05 20:58:20 by fbafica          ###   ########.fr       */
+/*   Updated: 2021/12/06 19:12:45 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ static void	exec_child(char **commands)
 	env_var_arr = env_var_table_to_env_var_arr();
 	command_and_path = get_command_and_path(*commands);
 	execve(command_and_path, commands, env_var_arr);
+	perror("error");
 	free(command_and_path);
 	free_tokens(env_var_arr);
 	exit(EXIT_FAILURE);

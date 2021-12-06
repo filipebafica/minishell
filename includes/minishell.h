@@ -6,7 +6,7 @@
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/08 14:49:38 by fbafica           #+#    #+#             */
-/*   Updated: 2021/12/06 17:20:16 by fbafica          ###   ########.fr       */
+/*   Updated: 2021/12/06 17:39:59 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ char				**join_tokens(char **tokens1, char **tokens2);
 void				delete_a_token(char ***tokens, int index);
 void				replace_a_token(char ***tokens, int index, char *new_token);
 int					check_a_token(char **tokens, char *token_to_check);
-void				expand_var_(char **tokens);
+void				expand_var(char **tokens);
 				/*
 				* HASH TABLE 
 				*/
@@ -119,7 +119,6 @@ void				create_pipe(int is_pipe);
 				* EXEC 
 				*/
 int					exec(char **tokens, int tokens_len);
-int					select_exec_type(char **commands, int pipe_flag);
 char				*get_command_and_path(char *command);
 int					exec_non_builtin(char **commands);
 int					is_builtin(char **commands, int pipe_flag);
@@ -129,7 +128,6 @@ int					exec_builtin(char **commands);
 				*/
 int					check_create_local_var(char **commands);
 int					create_local_vars(char **commands);
-int					expand_var(char *commands);
 int					echo(char **commands);
 int					cd(char **commands);
 char				*get_curr_dir(void);

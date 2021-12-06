@@ -6,30 +6,11 @@
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/26 21:05:47 by fbafica           #+#    #+#             */
-/*   Updated: 2021/12/01 21:09:11 by fbafica          ###   ########.fr       */
+/*   Updated: 2021/12/06 17:33:56 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-
-int	expand_var(char *commands)
-{
-	char	**new_command;
-	char	*var_value;
-
-	var_value = search_a_key(g_minishell.env_var, ++commands);
-	if (!var_value)
-		var_value = search_a_key(g_minishell.loc_var, commands);
-	if (var_value)
-	{
-		new_command = malloc(sizeof(char *) * 2);
-		new_command[0] = ft_strdup(var_value);
-		new_command[1] = (char *) '\0';
-		select_exec_type(new_command, 0);
-		free_tokens(new_command);
-	}
-	return (1);
-}
 
 int	create_local_vars(char **commands)
 {

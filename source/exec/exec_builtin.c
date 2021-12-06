@@ -6,7 +6,7 @@
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 21:57:29 by fbafica           #+#    #+#             */
-/*   Updated: 2021/12/02 13:37:02 by fbafica          ###   ########.fr       */
+/*   Updated: 2021/12/06 17:39:14 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,7 @@
 
 int	exec_builtin(char **commands)
 {
-	if (*commands[0] == '$')
-		return (expand_var(*commands));
-	else if (!ft_strcmp(*commands, "echo"))
+	if (!ft_strcmp(*commands, "echo"))
 		return (echo(commands));
 	else if (!ft_strcmp(*commands, "cd"))
 		return (cd(commands));
@@ -37,9 +35,7 @@ int	exec_builtin(char **commands)
 
 int	is_builtin(char **commands, int pipe_flag)
 {
-	if (*commands[0] == '$')
-		return (1);
-	else if (!ft_strcmp(*commands, "echo"))
+	if (!ft_strcmp(*commands, "echo"))
 		return (1);
 	else if (!ft_strcmp(*commands, "cd"))
 		return (1);

@@ -6,17 +6,17 @@
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/27 11:08:49 by fbafica           #+#    #+#             */
-/*   Updated: 2021/12/05 20:56:05 by fbafica          ###   ########.fr       */
+/*   Updated: 2021/12/06 17:37:51 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	select_exec_type(char **commands, int pipe_flag)
+static int	select_exec_type(char **commands, char **tokens)
 {
 	if (!*commands)
 		return (1);
-	else if (is_builtin(commands, pipe_flag))
+	else if (is_builtin(commands, check_a_token(tokens, "|")))
 		return (exec_builtin(commands));
 	else
 		return (exec_non_builtin(commands));
@@ -63,7 +63,7 @@ int	exec(char **tokens, int tokens_len)
 		cmd_len = get_cmd_len(tokens, tokens_len, start);
 		sub_cmd_len = get_sub_cmd_len(tokens, cmd_len, start);
 		commands = sub_tokens(tokens, start, sub_cmd_len);
-		status = select_exec_type(commands, check_a_token(tokens, "|"));
+		status = select_exec_type(commands, tokens);
 		free_tokens(commands);
 		replace_std_fd(g_minishell.std_fd);
 		start += cmd_len + 1;

@@ -6,7 +6,7 @@
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 14:46:30 by fbafica           #+#    #+#             */
-/*   Updated: 2021/12/06 17:02:23 by fbafica          ###   ########.fr       */
+/*   Updated: 2021/12/06 19:04:20 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static int	valid_input(char *input)
 	mod_input = ft_strdup(input);
 	space_handler(&mod_input);
 	tokens = get_tokens(mod_input);
-	expand_var_(tokens);
+	expand_var(tokens);
 	status = parser(tokens, get_tokens_len(tokens));
 	free(mod_input);
 	free_tokens(tokens);
@@ -52,6 +52,7 @@ int	run_shell(void)
 	char	*prompt;
 	int		status;
 
+	signals_new_prompt();
 	prompt = create_prompt();
 	input = readline(prompt);
 	if (!input)
