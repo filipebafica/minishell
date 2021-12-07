@@ -6,7 +6,7 @@
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 12:18:35 by fbafica           #+#    #+#             */
-/*   Updated: 2021/12/06 20:55:23 by fbafica          ###   ########.fr       */
+/*   Updated: 2021/12/07 13:38:15 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ char	**env_var_table_to_env_var_arr(void)
 {
 	t_pair	*tmp;
 	char	**env_vars;
-	char	*pair;
 	int		i;
 	int		j;
 
@@ -42,9 +41,7 @@ char	**env_var_table_to_env_var_arr(void)
 			tmp = g_minishell.env_var->pairs[i];
 			while (tmp)
 			{
-				pair = join_key_value(tmp->key, tmp->value);
-				env_vars[j] = ft_strdup(pair);
-				free(pair);
+				env_vars[j] = join_key_value(tmp->key, tmp->value);
 				++j;
 				tmp = tmp->next;
 			}
