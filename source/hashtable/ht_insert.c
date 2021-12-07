@@ -6,7 +6,7 @@
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/15 20:48:06 by fbafica           #+#    #+#             */
-/*   Updated: 2021/12/06 22:02:24 by fbafica          ###   ########.fr       */
+/*   Updated: 2021/12/06 22:42:50 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,9 @@ t_pair *new, int index)
 {
 	if (!ft_strcmp(curr->key, new->key))
 	{
-		free_pair(curr);
 		table->pairs[index] = new;
+		new->next = curr->next;
+		free_pair(curr);
 	}
 	else
 	{
