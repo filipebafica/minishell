@@ -6,7 +6,7 @@
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 14:46:30 by fbafica           #+#    #+#             */
-/*   Updated: 2021/12/06 19:04:20 by fbafica          ###   ########.fr       */
+/*   Updated: 2021/12/06 19:17:48 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static int	valid_input(char *input)
 
 static int	invalid_input(void)
 {
-	ft_putendl_fd("bad syntax", 1);
+	ft_putendl_fd("bad syntax", 2);
 	table_insert_pair(g_minishell.error_status, "?", "1");
 	return (1);
 }

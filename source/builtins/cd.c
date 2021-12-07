@@ -6,7 +6,7 @@
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/11 15:45:00 by fbafica           #+#    #+#             */
-/*   Updated: 2021/12/04 21:32:20 by fbafica          ###   ########.fr       */
+/*   Updated: 2021/12/06 19:35:25 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,9 @@ int	cd(char **commands)
 	char	*value;
 	char	*curr_dir;
 
+	curr_dir = get_curr_dir();
+	table_insert_pair(g_minishell.env_var, "OLDPWD", curr_dir);
+	free(curr_dir);
 	error_status = chdir(commands[1]);
 	if (error_status != 0)
 		error_status = 1;

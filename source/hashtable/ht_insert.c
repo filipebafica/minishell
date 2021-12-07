@@ -6,7 +6,7 @@
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/15 20:48:06 by fbafica           #+#    #+#             */
-/*   Updated: 2021/12/06 18:38:49 by fbafica          ###   ########.fr       */
+/*   Updated: 2021/12/06 22:02:24 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ t_pair *new, int index)
 	{
 		table->pairs[index] = new;
 		new->next = curr;
+		table->separate_chain++;
 	}
-	table->separate_chain++;
 }
 
 static void	empty_index(t_table *table, t_pair *new, int index)
