@@ -6,13 +6,13 @@
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 15:45:04 by fbafica           #+#    #+#             */
-/*   Updated: 2021/12/06 18:46:39 by fbafica          ###   ########.fr       */
+/*   Updated: 2021/12/07 21:08:03 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-static char	*check_key(char *key)
+char	*get_value_by_key(char *key)
 {
 	char	*value;
 
@@ -35,9 +35,9 @@ void	expand_var(char **tokens)
 	i = 0;
 	while (tokens[i])
 	{
-		if (tokens[i][0] == '$')
+		if (tokens[i][0] == '$' && ft_strlen(tokens[i]) > 1)
 		{
-			value = check_key(tokens[i] + 1);
+			value = get_value_by_key(tokens[i] + 1);
 			if (value)
 				replace_a_token(&tokens, i, value);
 			else

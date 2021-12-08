@@ -6,7 +6,7 @@
 #    By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/08 14:36:44 by fbafica           #+#    #+#              #
-#    Updated: 2021/12/06 17:38:31 by fbafica          ###   ########.fr        #
+#    Updated: 2021/12/07 21:07:11 by fbafica          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ FLAGS = -g -fsanitize=address -Wall -Wextra -Werror -lreadline
 SOURCE_CODE = ./source/main.c \
 ./source/shell/run_shell.c \
 ./source/signals/signals.c \
-./source/vars/vars_utils1.c \
+./source/vars/vars_tab_utils1.c \
 ./source/parser/parser.c  ./source/parser/fd_handler.c ./source/parser/pipe_parser.c ./source/parser/redirect_parser.c \
 ./source/parser/here_doc.c \
 ./source/exec/exec.c ./source/exec/exec_builtin.c ./source/exec/exec_non_builtin.c ./source/exec/path_handler.c \

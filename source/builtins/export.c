@@ -6,7 +6,7 @@
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 18:48:25 by fbafica           #+#    #+#             */
-/*   Updated: 2021/12/06 19:49:33 by fbafica          ###   ########.fr       */
+/*   Updated: 2021/12/07 22:46:54 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ static int	export_sorted_vars(void)
 	return (1);
 }
 
-static void	handle_env_var(char *var_key, char *var_value)
+static void	insert_env_var(char *var_key, char *var_value)
 {
 	table_insert_pair(g_minishell.env_var, var_key, var_value);
 	if (search_a_key(g_minishell.loc_var, var_key))
@@ -68,6 +68,7 @@ static void	handle_env_var(char *var_key, char *var_value)
 static int	export_var(char **commands)
 {
 	char	*key;
+	char	*value;
 	int		equal_sign;
 	int		i;
 
@@ -78,8 +79,10 @@ static int	export_var(char **commands)
 		if (equal_sign)
 		{
 			key = ft_substr(commands[i], 0, equal_sign);
-			handle_env_var(key, commands[i] + equal_sign + 1);
+			value = ft_strdup(commands[i] + equal_sign + 1);
+			insert_env_var(key, value);
 			free(key);
+			free(value);
 		}
 		++i;
 	}
