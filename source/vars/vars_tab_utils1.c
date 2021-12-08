@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vars_utils1.c                                      :+:      :+:    :+:   */
+/*   vars_tab_utils1.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 12:18:35 by fbafica           #+#    #+#             */
-/*   Updated: 2021/12/07 21:06:40 by fbafica          ###   ########.fr       */
+/*   Updated: 2021/12/08 14:27:50 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,21 @@ void	env_var_arr_to_env_var_table(char **env_var)
 		free(key);
 		++i;
 	}
+}
+
+char	*get_value_by_key(char *key)
+{
+	char	*value;
+
+	value = search_a_key(g_minishell.env_var, key);
+	if (!value)
+		value = search_a_key(g_minishell.loc_var, key);
+	if (!value)
+		value = search_a_key(g_minishell.error_status, key);
+	if (value)
+		return (value);
+	else
+		return (NULL);
 }
 
 void	create_var_tables(void)

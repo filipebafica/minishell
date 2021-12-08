@@ -6,7 +6,7 @@
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/17 17:02:57 by fbafica           #+#    #+#             */
-/*   Updated: 2021/10/25 16:53:24 by fbafica          ###   ########.fr       */
+/*   Updated: 2021/12/08 16:21:45 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@ static	int	get_len(char const *s1, char const *s2)
 
 	i = 0;
 	j = 0;
-	while (s1[i] != '\0')
+	while (s1 && s1[i] != '\0')
 	{
 		i++;
 	}
-	while (s2[j] != '\0')
+	while (s2 && s2[j] != '\0')
 	{
 		j++;
 	}
@@ -43,12 +43,12 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	new_string = malloc(len + 1);
 	if (!new_string)
 		return (NULL);
-	while (s1[i] != '\0')
+	while (s1 && s1[i] != '\0')
 	{
 		new_string[i] = s1[i];
 		i++;
 	}
-	while (s2[j] != '\0')
+	while (s2 && s2[j] != '\0')
 	{
 		new_string[i] = s2[j];
 		i++;

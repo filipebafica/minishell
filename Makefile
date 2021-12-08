@@ -6,7 +6,7 @@
 #    By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/08 14:36:44 by fbafica           #+#    #+#              #
-#    Updated: 2021/12/07 21:07:11 by fbafica          ###   ########.fr        #
+#    Updated: 2021/12/08 19:03:33 by fbafica          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,7 @@ SOURCE_CODE = ./source/main.c \
 ./source/builtins/echo.c ./source/builtins/cd.c ./source/builtins/pwd.c ./source/builtins/exit.c \
 ./source/builtins/env.c ./source/builtins/export.c ./source/builtins/unset.c ./source/builtins/create_loc_var.c \
 ./source/input_handler/space_handler.c ./source/input_handler/quotes_check.c ./source/input_handler/get_tokens.c \
-./source/input_handler/expand_var.c \
+./source/input_handler/expand_var.c ./source/input_handler/remove_double_quotes.c \
 ./source/input_handler/tokens_utils1.c ./source/input_handler/tokens_utils2.c ./source/input_handler/init_end_check.c  \
 ./source/input_handler/no_input_check.c ./source/input_handler/bad_redirect_check.c ./source/input_handler/bad_equal_check.c \
 ./source/hashtable/hash_function.c ./source/hashtable/ht_create.c ./source/hashtable/ht_insert.c ./source/hashtable/ht_delete.c \

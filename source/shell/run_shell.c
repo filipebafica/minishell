@@ -6,7 +6,7 @@
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 14:46:30 by fbafica           #+#    #+#             */
-/*   Updated: 2021/12/06 19:17:48 by fbafica          ###   ########.fr       */
+/*   Updated: 2021/12/08 19:58:48 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ static int	valid_input(char *input)
 	space_handler(&mod_input);
 	tokens = get_tokens(mod_input);
 	expand_var(tokens);
+	remove_double_quotes(tokens);
 	status = parser(tokens, get_tokens_len(tokens));
 	free(mod_input);
 	free_tokens(tokens);
