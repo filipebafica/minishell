@@ -61,4 +61,6 @@ fclean: clean
 re: fclean all
 
 install:
+	sudo apt-get install libreadline7
 	sudo apt-get install libreadline-dev
+
