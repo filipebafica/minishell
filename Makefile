@@ -6,7 +6,7 @@
 #    By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/08 14:36:44 by fbafica           #+#    #+#              #
-#    Updated: 2021/12/08 19:03:33 by fbafica          ###   ########.fr        #
+#    Updated: 2021/12/09 14:57:06 by fbafica          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -59,3 +59,6 @@ fclean: clean
 	@rm -f $(NAME)
 
 re: fclean all
+
+install:
+	sudo apt-get install libreadline-dev
