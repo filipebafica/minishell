@@ -6,7 +6,7 @@
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/08 14:49:38 by fbafica           #+#    #+#             */
-/*   Updated: 2021/12/09 14:56:36 by fbafica          ###   ########.fr       */
+/*   Updated: 2021/12/09 19:39:09 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ typedef struct s_minishell
 				/*
 				* INIT SHELL 
 				*/
-t_minishell		g_minishell;
+extern t_minishell	g_minishell;
 int					run_shell(void);
 char				*create_prompt(void);
 				/*

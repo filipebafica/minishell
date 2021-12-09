@@ -6,7 +6,7 @@
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/27 11:08:49 by fbafica           #+#    #+#             */
-/*   Updated: 2021/12/07 15:33:16 by fbafica          ###   ########.fr       */
+/*   Updated: 2021/12/09 19:39:51 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static int	get_sub_cmd_len(char **tokens, int cmd_len, int start)
 		files_check = handle_redirect_files(tokens + start, cmd_len);
 	if (!files_check)
 		return (files_check);
-	if (sub_cmd_len <= 0)
+	if (sub_cmd_len < 0)
 		sub_cmd_len = cmd_len;
 	return (sub_cmd_len);
 }
