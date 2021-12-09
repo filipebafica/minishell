@@ -6,7 +6,7 @@
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/29 13:10:38 by fbafica           #+#    #+#             */
-/*   Updated: 2021/12/05 20:21:10 by fbafica          ###   ########.fr       */
+/*   Updated: 2021/12/09 13:47:53 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,7 @@ static char	*get_user_input(char *eof_token)
 	{
 		input = readline(">");
 		if (!input)
-		{
-			write(1, "\n", 1);
-			exit(0);
-		}
+			kill_process();
 		if (!ft_strcmp(input, eof_token))
 		{
 			free(input);
@@ -51,6 +48,8 @@ static char	*get_user_input(char *eof_token)
 		free(input);
 	}
 	replace_std_fd(tmp_fd);
+	close(tmp_fd[IN]);
+	close(tmp_fd[OUT]);
 	return (buffer);
 }
 

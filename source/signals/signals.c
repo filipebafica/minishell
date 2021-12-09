@@ -6,7 +6,7 @@
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/03 19:27:50 by fbafica           #+#    #+#             */
-/*   Updated: 2021/12/04 19:01:52 by fbafica          ###   ########.fr       */
+/*   Updated: 2021/12/09 13:47:25 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,12 @@ static void	handle_singint_new_prompt(int signum)
 	else
 		return ;
 	table_insert_pair(g_minishell.error_status, "?", "130");
+}
+
+void	kill_process(void)
+{
+	write(1, "\n", 1);
+	exit(0);
 }
 
 void	signals_new_prompt(void)
