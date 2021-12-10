@@ -6,7 +6,7 @@
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/08 14:49:38 by fbafica           #+#    #+#             */
-/*   Updated: 2021/12/09 19:39:09 by fbafica          ###   ########.fr       */
+/*   Updated: 2021/12/10 16:17:04 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,8 @@ void				replace_a_token(char ***tokens, int index, char *new_token);
 int					check_a_token(char **tokens, char *token_to_check);
 void				expand_var(char **tokens);
 void				remove_double_quotes(char **tokens);
+int					check_expand_var(char *token, int var_start);
+void				replace_var(char **token, int var_start);
 				/*
 				* HASH TABLE 
 				*/

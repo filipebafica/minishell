@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   expand_var.c                                       :+:      :+:    :+:   */
+/*   expand_var_2.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 15:45:04 by fbafica           #+#    #+#             */
-/*   Updated: 2021/12/08 20:17:06 by fbafica          ###   ########.fr       */
+/*   Updated: 2021/12/10 16:16:54 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static int	get_var_len(char *token, int start)
 	return (i);
 }
 
-static void	replace_var(char **token, int var_start)
+void	replace_var(char **token, int var_start)
 {
 	int		var_len;
 	char	*tmp_1;
@@ -56,44 +56,58 @@ static void	replace_var(char **token, int var_start)
 		free(tmp_3);
 }
 
-static int	open_with_single(char *token)
+static int	check_sing(char *token, int var_start)
 {
 	int	i;
+	int	sing;
+	int	open_by_doub;
 
+	open_by_doub = 1;
+	sing = 0;
 	i = 0;
-	while (token[i] != '\0')
+	while (token[i] && i < var_start)
 	{
 		if (token[i] == "'"[0])
-			return (1);
-		if (token[i] == '"')
-			break ;
+			++sing;
 		++i;
 	}
-	return (0);
-}
-
-static int	check_expand_var(char *token, int var_start)
-{
-	if (!open_with_single(token) && token[var_start + 1] != ' ' \
-	&& token[var_start + 1] != '\0')
+	if (ft_strchrlen(token, '"') >= ft_strchrlen(token, "'"[0]))
+		open_by_doub = 0;
+	if (sing % 2 == 0 || open_by_doub)
 		return (1);
 	return (0);
 }
 
-void	expand_var(char **tokens)
+static int	check_doub(char *token, int var_start)
 {
-	int		i;
-	int		var_start;
+	int	i;
+	int	doub;
+	int	open_by_doub;
 
+	open_by_doub = 1;
+	doub = 0;
 	i = 0;
-	while (tokens[i])
+	while (token[i] && i < var_start)
 	{
-		if (ft_strchr(tokens[i], '$'))
-		{
-			var_start = ft_strchrlen(tokens[i], '$');
-			if (check_expand_var(tokens[i], var_start))
-				replace_var(&(tokens[i]), var_start);
-		}
+		if (token[i] == '"')
+			++doub;
 		++i;
 	}
+	if (ft_strchrlen(token, '"') > ft_strchrlen(token, "'"[0]))
+		open_by_doub = 0;
+	if (!ft_strchr(token, '"') || doub % 2 != 0 || open_by_doub)
+		return (1);
+	return (0);
+}
+
+int	check_expand_var(char *token, int var_start)
+{
+	int	sing;
+	int	doub;
+
+	sing = check_sing(token, var_start);
+	doub = check_doub(token, var_start);
+	if (sing && doub && token[var_start] != ' ' && token[var_start] != '\0')
+		return (1);
+	return (0);
 }
