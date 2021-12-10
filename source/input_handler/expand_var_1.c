@@ -6,7 +6,7 @@
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/10 16:15:10 by fbafica           #+#    #+#             */
-/*   Updated: 2021/12/10 19:17:12 by fbafica          ###   ########.fr       */
+/*   Updated: 2021/12/10 19:54:51 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	expand_var(char **tokens)
 		var_start = 0;
 		while (j < num_vars)
 		{
-			var_start = ft_strchrlen(tokens[i] + var_start, '$') + 1;
+			var_start = ft_strchrlen(tokens[i], '$') + 1;
 			if (check_expand_var(tokens[i], var_start))
 				replace_var(&(tokens[i]), var_start - 1);
 			++j;
