@@ -6,7 +6,7 @@
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 15:45:04 by fbafica           #+#    #+#             */
-/*   Updated: 2021/12/10 16:16:54 by fbafica          ###   ########.fr       */
+/*   Updated: 2021/12/10 19:36:07 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,9 +59,11 @@ void	replace_var(char **token, int var_start)
 static int	check_sing(char *token, int var_start)
 {
 	int	i;
+	int	j;
 	int	sing;
 	int	open_by_doub;
 
+	j = 0;
 	open_by_doub = 1;
 	sing = 0;
 	i = 0;
@@ -69,9 +71,14 @@ static int	check_sing(char *token, int var_start)
 	{
 		if (token[i] == "'"[0])
 			++sing;
+		if (sing == 2)
+		{
+			sing = 0;
+			j = i + 1;
+		}
 		++i;
 	}
-	if (ft_strchrlen(token, '"') >= ft_strchrlen(token, "'"[0]))
+	if (ft_strchrlen(token + j, '"') >= ft_strchrlen(token + j, "'"[0]))
 		open_by_doub = 0;
 	if (sing % 2 == 0 || open_by_doub)
 		return (1);
@@ -81,9 +88,11 @@ static int	check_sing(char *token, int var_start)
 static int	check_doub(char *token, int var_start)
 {
 	int	i;
+	int	j;
 	int	doub;
 	int	open_by_doub;
 
+	j = 0;
 	open_by_doub = 1;
 	doub = 0;
 	i = 0;
@@ -91,11 +100,16 @@ static int	check_doub(char *token, int var_start)
 	{
 		if (token[i] == '"')
 			++doub;
+		if (doub == 2)
+		{
+			doub = 0;
+			j = i + 1;
+		}
 		++i;
 	}
-	if (ft_strchrlen(token, '"') > ft_strchrlen(token, "'"[0]))
+	if (ft_strchrlen(token + j, '"') > ft_strchrlen(token + j, "'"[0]))
 		open_by_doub = 0;
-	if (!ft_strchr(token, '"') || doub % 2 != 0 || open_by_doub)
+	if (!ft_strchr(token, '"') || doub % 2 != 0 || (open_by_doub && doub))
 		return (1);
 	return (0);
 }
@@ -107,7 +121,8 @@ int	check_expand_var(char *token, int var_start)
 
 	sing = check_sing(token, var_start);
 	doub = check_doub(token, var_start);
-	if (sing && doub && token[var_start] != ' ' && token[var_start] != '\0')
+	if (ft_strcmp(token, "") && sing && doub && \
+	token[var_start] != ' ' && token[var_start] != '\0')
 		return (1);
 	return (0);
 }
