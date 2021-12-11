@@ -6,7 +6,7 @@
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 21:58:30 by fbafica           #+#    #+#             */
-/*   Updated: 2021/12/07 19:34:20 by fbafica          ###   ########.fr       */
+/*   Updated: 2021/12/11 14:29:45 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	exec_non_builtin(char **commands)
 	int		status;
 	char	*error_status;
 
-	signals_empty_line();
+	exec_signals();
 	pid = fork();
 	if (pid == 0)
 		exec_child(commands);

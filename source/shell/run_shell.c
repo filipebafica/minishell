@@ -6,7 +6,7 @@
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 14:46:30 by fbafica           #+#    #+#             */
-/*   Updated: 2021/12/09 13:47:41 by fbafica          ###   ########.fr       */
+/*   Updated: 2021/12/11 15:20:37 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,12 +53,13 @@ int	run_shell(void)
 	char	*prompt;
 	int		status;
 
-	signals_new_prompt();
+	non_exec_signals();
 	prompt = create_prompt();
 	input = readline(prompt);
 	if (!input)
 		kill_process();
-	add_history(input);
+	if (ft_strcmp(input, ""))
+		add_history(input);
 	if (no_input_check(input))
 		status = 1;
 	else if (!quotes_check(input) || !init_check(input) \

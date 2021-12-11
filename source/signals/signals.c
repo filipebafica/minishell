@@ -6,36 +6,38 @@
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/03 19:27:50 by fbafica           #+#    #+#             */
-/*   Updated: 2021/12/09 13:47:25 by fbafica          ###   ########.fr       */
+/*   Updated: 2021/12/11 15:31:05 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-static void	handle_singint_empty_line(int signum)
+static void	handler_exec(int signum)
 {
-	(void)signum;
-	if (isatty(STDIN_FILENO))
-		ft_printf("\n");
-	else
-		return ;
-	table_insert_pair(g_minishell.error_status, "?", "130");
+	if (signum == SIGINT)
+	{
+		table_insert_pair(g_minishell.error_status, "?", "130");
+		write(1, "\n", 1);
+	}
+	if (signum == SIGQUIT)
+	{
+		table_insert_pair(g_minishell.error_status, "?", "131");
+		ft_putendl_fd("Quit", 2);
+	}
 }
 
-static void	handle_singint_new_prompt(int signum)
+static void	handler_non_exec(int signum)
 {
-	char	*prompt;
-
-	(void)signum;
-	if (isatty(STDIN_FILENO))
+	if (isatty(STDIN_FILENO) && signum == SIGINT)
 	{
-		prompt = create_prompt();
-		ft_printf("\n%s", prompt);
-		free(prompt);
+		ft_printf("\n");
+		rl_replace_line("", 0);
+		rl_on_new_line();
+		rl_redisplay();
+		table_insert_pair(g_minishell.error_status, "?", "130");
 	}
 	else
 		return ;
-	table_insert_pair(g_minishell.error_status, "?", "130");
 }
 
 void	kill_process(void)
@@ -44,13 +46,14 @@ void	kill_process(void)
 	exit(0);
 }
 
-void	signals_new_prompt(void)
+void	exec_signals(void)
 {
-	signal(SIGINT, handle_singint_new_prompt);
-	signal(SIGQUIT, SIG_IGN);
+	signal(SIGINT, handler_exec);
+	signal(SIGQUIT, handler_exec);
 }
 
-void	signals_empty_line(void)
+void	non_exec_signals(void)
 {
-	signal(SIGINT, handle_singint_empty_line);
+	signal(SIGINT, handler_non_exec);
+	signal(SIGQUIT, SIG_IGN);
 }
