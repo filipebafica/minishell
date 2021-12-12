@@ -6,7 +6,7 @@
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/03 19:27:50 by fbafica           #+#    #+#             */
-/*   Updated: 2021/12/11 15:31:05 by fbafica          ###   ########.fr       */
+/*   Updated: 2021/12/11 22:08:29 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static void	handler_non_exec(int signum)
 {
 	if (isatty(STDIN_FILENO) && signum == SIGINT)
 	{
-		ft_printf("\n");
+		write(1, "\n", 1);
 		rl_replace_line("", 0);
 		rl_on_new_line();
 		rl_redisplay();
