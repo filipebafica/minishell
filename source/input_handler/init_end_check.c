@@ -6,29 +6,16 @@
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/15 16:57:08 by fbafica           #+#    #+#             */
-/*   Updated: 2021/11/30 16:47:49 by fbafica          ###   ########.fr       */
+/*   Updated: 2021/12/14 01:58:38 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	end_check(char *input)
+static int	validate_end(char *input, int position)
 {
-	char	*set;
-	int		position;
-	int		chr_len;
-	int		i;
+	int	i;
 
-	set = "><|";
-	position = 0;
-	i = 0;
-	while (set[i] != '\0')
-	{
-		chr_len = ft_strrchrlen(input, set[i]);
-		if (chr_len > position)
-			position = chr_len;
-		++i;
-	}
 	i = 1;
 	while (input[position + i] != '\0')
 	{
@@ -38,6 +25,30 @@ int	end_check(char *input)
 		++i;
 	}
 	return (0);
+}
+
+int	end_check(char *input)
+{
+	char	*set;
+	int		position;
+	int		chr_len;
+	int		i;
+
+	set = "><|";
+	position = -1;
+	chr_len = -1;
+	i = 0;
+	while (set[i] != '\0')
+	{
+		if (ft_strchr(input, set[i]))
+			chr_len = ft_strrchrlen(input, set[i]);
+		if (chr_len > position)
+			position = chr_len;
+		++i;
+	}
+	if (position < 0)
+		return (1);
+	return (validate_end(input, position));
 }
 
 int	init_check(char *input)

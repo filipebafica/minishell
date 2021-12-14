@@ -6,7 +6,7 @@
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/18 16:55:57 by fbafica           #+#    #+#             */
-/*   Updated: 2021/12/06 22:17:16 by fbafica          ###   ########.fr       */
+/*   Updated: 2021/12/13 15:28:20 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ void	free_linked_pair(t_pair *pair)
 	t_pair	*tmp_next;
 
 	tmp_curr = pair;
+	tmp_next = pair;
 	while (tmp_next != NULL)
 	{
 		tmp_next = tmp_curr->next;

@@ -6,7 +6,7 @@
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/08 14:49:23 by fbafica           #+#    #+#             */
-/*   Updated: 2021/12/09 19:39:24 by fbafica          ###   ########.fr       */
+/*   Updated: 2021/12/13 16:44:21 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,11 @@ int	main(void)
 	status = 1;
 	while (status)
 		status = run_shell();
-	return (0);
+	status = ft_atoi(search_a_key(g_minishell.error_status, "?"));
+	close(g_minishell.std_fd[IN]);
+	close(g_minishell.std_fd[OUT]);
+	free_table(g_minishell.env_var);
+	free_table(g_minishell.loc_var);
+	free_table(g_minishell.error_status);
+	return (status);
 }

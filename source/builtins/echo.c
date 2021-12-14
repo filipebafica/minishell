@@ -6,7 +6,7 @@
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/25 16:36:05 by fbafica           #+#    #+#             */
-/*   Updated: 2021/12/08 20:22:43 by fbafica          ###   ########.fr       */
+/*   Updated: 2021/12/13 16:11:22 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,8 @@ int	echo(char **commands)
 	commands_len = get_tokens_len(commands);
 	i = 1;
 	if (!ft_strcmp(commands[i], "-n"))
-		++i;
+		while (!ft_strcmp(commands[i], "-n"))
+			++i;
 	while (commands[i])
 	{
 		print_arg(commands[i]);

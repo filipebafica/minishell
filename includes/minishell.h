@@ -6,7 +6,7 @@
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/08 14:49:38 by fbafica           #+#    #+#             */
-/*   Updated: 2021/12/11 21:48:43 by fbafica          ###   ########.fr       */
+/*   Updated: 2021/12/13 20:30:19 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ char				**get_tokens(char *s);
 void				print_tokens(char **tokens);
 void				free_tokens(char **tokens);
 int					get_tokens_len(char **tokens);
-char				**sub_tokens(char **tokens, int start, int end);
+char				**sub_tokens(char **tokens, int start, int len);
 char				**join_tokens(char **tokens1, char **tokens2);
 void				delete_a_token(char ***tokens, int index);
 void				replace_a_token(char ***tokens, int index, char *new_token);
@@ -122,7 +122,7 @@ void				create_pipe(int is_pipe);
 				/*
 				* EXEC 
 				*/
-int					exec(char **tokens, int tokens_len);
+int					exec(char **commands, char **tokens);
 char				*get_command_and_path(char *command);
 int					exec_non_builtin(char **commands);
 int					is_builtin(char **commands, int pipe_flag);

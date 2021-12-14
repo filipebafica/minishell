@@ -6,7 +6,7 @@
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 16:45:04 by fbafica           #+#    #+#             */
-/*   Updated: 2021/12/07 16:07:13 by fbafica          ###   ########.fr       */
+/*   Updated: 2021/12/13 23:02:23 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ static int	redirect_out(char *file_name, int flags)
 	else
 	{
 		perror("error");
+		table_insert_pair(g_minishell.error_status, "?", "1");
 		return (0);
 	}
 	return (1);
@@ -43,6 +44,7 @@ static int	redirect_in(char *file_name, int flags)
 	else
 	{
 		perror("error");
+		table_insert_pair(g_minishell.error_status, "?", "1");
 		return (0);
 	}
 	return (1);
@@ -57,7 +59,7 @@ int	find_redirect_operator(char **tokens, int tokens_len)
 	op_1 = '>';
 	op_2 = '<';
 	i = 0;
-	while (i < tokens_len)
+	while (tokens[i] && i < tokens_len)
 	{
 		if (op_1 == tokens[i][0] || op_2 == tokens[i][0])
 			return (i);
@@ -72,6 +74,7 @@ int	handle_redirect_files(char **tokens, int tokens_len)
 	int	check;
 
 	i = 0;
+	check = 1;
 	while (i <= tokens_len)
 	{
 		if (!ft_strcmp(tokens[i], ">") && ft_strcmp(tokens[i + 1], ">"))
