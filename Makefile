@@ -6,7 +6,7 @@
 #    By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/08 14:36:44 by fbafica           #+#    #+#              #
-#    Updated: 2021/12/14 18:27:25 by fbafica          ###   ########.fr        #
+#    Updated: 2021/12/15 00:12:10 by fbafica          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,6 +29,7 @@ SOURCE_CODE = ./source/main.c \
 ./source/exec/exec.c ./source/exec/exec_builtin.c ./source/exec/exec_non_builtin.c ./source/exec/path_handler.c \
 ./source/builtins/echo.c ./source/builtins/cd.c ./source/builtins/pwd.c ./source/builtins/exit.c \
 ./source/builtins/env.c ./source/builtins/export.c ./source/builtins/unset.c ./source/builtins/create_loc_var.c \
+./source/builtins/export_sorted.c ./source/builtins/export_vars.c \
 ./source/input_handler/space_handler.c ./source/input_handler/quotes_check.c ./source/input_handler/get_tokens.c \
 ./source/input_handler/expand_var_1.c ./source/input_handler/expand_var_2.c ./source/input_handler/remove_double_quotes.c \
 ./source/input_handler/tokens_utils1.c ./source/input_handler/tokens_utils2.c ./source/input_handler/init_end_check.c  \

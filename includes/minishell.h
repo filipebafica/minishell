@@ -6,7 +6,7 @@
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/08 14:49:38 by fbafica           #+#    #+#             */
-/*   Updated: 2021/12/14 22:20:21 by fbafica          ###   ########.fr       */
+/*   Updated: 2021/12/14 23:57:47 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,6 +127,8 @@ char				*get_command_and_path(char *command);
 int					exec_non_builtin(char **commands);
 int					is_builtin(char **commands, int pipe_flag);
 int					exec_builtin(char **commands);
+int					export_var(char **commands);
+int					export_sorted_vars(void);
 				/*
 				* BUILTINS 
 				*/
