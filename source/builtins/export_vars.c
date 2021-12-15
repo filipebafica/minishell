@@ -6,7 +6,7 @@
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/14 23:53:42 by fbafica           #+#    #+#             */
-/*   Updated: 2021/12/15 00:15:43 by fbafica          ###   ########.fr       */
+/*   Updated: 2021/12/15 18:21:22 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ static void	insert_env_var(char *var_key, char *var_value)
 
 static int	is_valid_key(char *key)
 {
-	if (ft_isalpha(key[0]) || key[0] == '_')
+	if ((ft_isalpha(key[0]) || key[0] == '_') &&
+	!ft_strchr(key, '#'))
 		return (1);
 	ft_putendl_fd("invalid character", 2);
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/08 18:25:54 by fbafica           #+#    #+#             */
-/*   Updated: 2021/12/10 20:26:26 by fbafica          ###   ########.fr       */
+/*   Updated: 2021/12/15 17:11:21 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,8 @@ void	remove_double_quotes(char **tokens)
 	i = 0;
 	while (tokens[i])
 	{
-		while (open_with_double(tokens[i]))
+		while (open_with_double(tokens[i]) && !ft_strchr(tokens[i], '|') && \
+		!ft_strchr(tokens[i], '<') && !ft_strchr(tokens[i], '>'))
 			remove_quote(&tokens[i]);
 		++i;
 	}

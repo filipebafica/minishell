@@ -6,7 +6,7 @@
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 15:45:03 by fbafica           #+#    #+#             */
-/*   Updated: 2021/11/27 20:08:47 by fbafica          ###   ########.fr       */
+/*   Updated: 2021/12/15 17:53:53 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,18 @@ static void	add_space(char **input, int index)
 	free(frst_half);
 	free(scnd_half);
 }
+static int	inside_quotes(char *input, int index)
+{
+	char	*tmp;
+	int		check;
+
+	tmp = ft_substr(input, 0, index);
+	check = quotes_check(tmp);
+	free(tmp);
+	if (!check)
+		return (1);
+	return (0);
+}
 
 void	space_handler(char **input)
 {
@@ -45,9 +57,9 @@ void	space_handler(char **input)
 		j = 0;
 		while (set[j] != '\0')
 		{
-			if (((*input)[i - 1] != ' ' && (*input)[i] == set[j]) || \
-			((*input)[i + 1] != ' ' && (*input)[i + 1] != '\0' && \
-			(*input)[i] == set[j]))
+			if (!inside_quotes(*input, i) && (((*input)[i - 1] != ' ' && \
+			(*input)[i] == set[j]) || ((*input)[i + 1] != ' ' \
+			&& (*input)[i + 1] != '\0' && (*input)[i] == set[j])))
 			{
 				add_space(input, i);
 				++i;

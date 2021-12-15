@@ -6,7 +6,7 @@
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/25 16:36:05 by fbafica           #+#    #+#             */
-/*   Updated: 2021/12/13 16:11:22 by fbafica          ###   ########.fr       */
+/*   Updated: 2021/12/15 18:17:48 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,9 @@ static void	print_arg(char *arg)
 	while (i < arg_len)
 	{
 		if (i < arg_len)
+		{
 			ft_putchar_fd(arg[i], 1);
+		}
 		++i;
 	}
 }
