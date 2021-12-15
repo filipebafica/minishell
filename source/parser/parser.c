@@ -6,60 +6,48 @@
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/29 16:53:28 by fbafica           #+#    #+#             */
-/*   Updated: 2021/12/14 00:28:17 by fbafica          ###   ########.fr       */
+/*   Updated: 2021/12/14 22:20:25 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-static int	get_sub_len(char **tokens, int start, int len)
+static void	check_bad_tokens(char ***cmd)
 {
-	int	sub_len;
-	int	files_check;
+	int	op;
 
-	files_check = 1;
-	sub_len = -1;
-	sub_len = find_redirect_operator(tokens + start, len);
-	if (sub_len >= 0)
-		files_check = handle_redirect_files(tokens + start, len);
-	if (!files_check)
-		return (files_check);
-	if (sub_len <= 0)
-		sub_len = len;
-	return (sub_len);
+	while (find_redirect_operator(*cmd, get_tokens_len(*cmd)) >= 0)
+	{
+		op = find_redirect_operator(*cmd, get_tokens_len(*cmd));
+		if (op >= 0)
+		{
+			delete_a_token(cmd, op);
+			if (find_redirect_operator(*cmd + op, 1) < 0)
+				delete_a_token(cmd, op);
+		}
+	}
 }
 
-static int	get_sub_start(char **tokens, int start, int end)
+static int	handle_files(char **tokens, int start, int len)
 {
-	int	sub_start;
+	int	status;
 
-	sub_start = start;
-	if (!find_redirect_operator(tokens + start, 1))
-	{
-		if (!find_redirect_operator(tokens + start + 1, 1))
-			sub_start = end;
-		else if (start + 2 <= end)
-			sub_start += 2;
-		else if (start + 1 <= end)
-			sub_start += 1;
-	}
-	return (sub_start);
+	status = 1;
+	if (find_redirect_operator(tokens + start, len) >= 0)
+		redirect_parser(&status, tokens + start, len);
+	return (status);
 }
 
 static char	**get_cmd(char **tokens, int start, int len)
 {
 	char	**cmd;
-	int		sub_start;
-	int		sub_len;
+	int		files;
 
-	sub_start = get_sub_start(tokens, start, len);
-	sub_len = get_sub_len(tokens, start, len);
-	if (sub_start != start)
-		sub_len -= sub_start;
-	if (sub_len < 0)
-		cmd = sub_tokens(tokens, 0, 0);
-	else
-		cmd = sub_tokens(tokens, sub_start, sub_len);
+	files = handle_files(tokens, start, len);
+	if (!files)
+		return (sub_tokens(tokens, 0, 0));
+	cmd = sub_tokens(tokens, start, len);
+	check_bad_tokens(&cmd);
 	return (cmd);
 }
 

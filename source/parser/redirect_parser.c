@@ -6,7 +6,7 @@
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 16:45:04 by fbafica           #+#    #+#             */
-/*   Updated: 2021/12/13 23:02:23 by fbafica          ###   ########.fr       */
+/*   Updated: 2021/12/14 22:20:33 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,31 +68,29 @@ int	find_redirect_operator(char **tokens, int tokens_len)
 	return (-1);
 }
 
-int	handle_redirect_files(char **tokens, int tokens_len)
+int	redirect_parser(int *status, char **tokens, int tokens_len)
 {
 	int	i;
-	int	check;
 
 	i = 0;
-	check = 1;
 	while (i <= tokens_len)
 	{
 		if (!ft_strcmp(tokens[i], ">") && ft_strcmp(tokens[i + 1], ">"))
-			check = redirect_out(tokens[i + 1], O_RDWR | O_CREAT | O_TRUNC);
+			*status = redirect_out(tokens[i + 1], O_RDWR | O_CREAT | O_TRUNC);
 		else if (!ft_strcmp(tokens[i], ">") && !ft_strcmp(tokens[i + 1], ">"))
 		{
-			check = redirect_out(tokens[i + 2], O_RDWR | O_CREAT | O_APPEND);
+			*status = redirect_out(tokens[i + 2], O_RDWR | O_CREAT | O_APPEND);
 			++i;
 		}
 		else if (!ft_strcmp(tokens[i], "<") && ft_strcmp(tokens[i + 1], "<"))
-			check = redirect_in(tokens[i + 1], O_RDONLY);
+			*status = redirect_in(tokens[i + 1], O_RDONLY);
 		else if (!ft_strcmp(tokens[i], "<") && !ft_strcmp(tokens[i + 1], "<"))
 		{
-			check = here_doc(tokens[i + 2]);
+			*status = here_doc(tokens[i + 2]);
 			++i;
 		}
-		if (!check)
-			return (check);
+		if (!*status)
+			return (*status);
 		++i;
 	}
 	return (1);
