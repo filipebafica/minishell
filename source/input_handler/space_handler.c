@@ -6,7 +6,7 @@
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 15:45:03 by fbafica           #+#    #+#             */
-/*   Updated: 2021/12/15 17:53:53 by fbafica          ###   ########.fr       */
+/*   Updated: 2021/12/15 19:56:35 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ static void	add_space(char **input, int index)
 	free(frst_half);
 	free(scnd_half);
 }
+
 static int	inside_quotes(char *input, int index)
 {
 	char	*tmp;
