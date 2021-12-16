@@ -6,11 +6,16 @@
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/25 16:36:05 by fbafica           #+#    #+#             */
-/*   Updated: 2021/12/15 22:10:30 by fbafica          ###   ########.fr       */
+/*   Updated: 2021/12/15 22:20:16 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+static void	not_print(void)
+{
+	return ;
+}
 
 static	int	who_opend(char *s)
 {
@@ -58,7 +63,7 @@ static void	print_arg(char *arg)
 		{
 			if ((arg[i] == '"' || arg[i] == "'"[0]) \
 			&& !print_quote(arg, i))
-				ft_putchar_fd('\0', 1);
+				not_print();
 			else
 				ft_putchar_fd(arg[i], 1);
 		}

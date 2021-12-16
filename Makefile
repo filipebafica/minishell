@@ -6,7 +6,7 @@
 #    By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/08 14:36:44 by fbafica           #+#    #+#              #
-#    Updated: 2021/12/15 18:22:38 by fbafica          ###   ########.fr        #
+#    Updated: 2021/12/15 22:14:18 by fbafica          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ FT_PRINTF_INCLUDE = ./ft_printf/includes/
 FT_PRINTF = ./ft_printf/ft_printf.a
 
 INCLUDE_PATH = ./includes/
-FLAGS = -Wall -Wextra -Werror -lreadline
+FLAGS = -g -Wall -Wextra -Werror -lreadline
 SOURCE_CODE = ./source/main.c \
 ./source/shell/run_shell.c \
 ./source/signals/signals.c ./source/signals/here_doc_signals.c \
