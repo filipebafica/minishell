@@ -1,6 +1,7 @@
 # minishell
 A shell program in C
-![shell_demo_AdobeCreativeCloudExpress](https://user-images.githubusercontent.com/31427890/146617384-d5535d7b-31de-4cab-8397-a74347855587.gif)
+
+![shell_demo](https://user-images.githubusercontent.com/31427890/146617819-24591d5a-5099-4cdb-8cad-6efa2743fe47.gif)
 
 ## 🗂 Table of Contents
 * [About](#-about)
@@ -32,7 +33,6 @@ Run the `minishell` executable.
 ```
 $ ./minishell
 ```
-
 
 ## 📜 Bibliography
 
