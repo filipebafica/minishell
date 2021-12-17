@@ -1,11 +1,11 @@
 # minishell
-A shell program
+A shell program in C
 
 ## 🗂 Table of Contents
 * [About](#-about)
 * [Getting Started](#-getting-started)
 * [How to Use](#-how-to-use)
-* [Resources](#-resouces)
+* [Bibliography](#-bibliography)
 * [42 École | 42 São Paulo](#-42-école--42-são-paulo)
 
 ## 🧐 About
