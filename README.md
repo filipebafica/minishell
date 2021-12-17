@@ -38,7 +38,7 @@ $ ./minishell
 
 * [Unix Processes in C](https://www.youtube.com/playlist?list=PLfqABt5AS4FkW5mOn2Tn9ZZLLDwA3kZUY)
 * [Hash Table in C/C++ – A Complete Implementation](https://www.journaldev.com/35238/hash-table-in-c-plus-plus)
-* [Writing A Unix Shell In C / Signals](https://indradhanush.github.io/blog/writing-a-unix-shell-part-3/)
+* [Writing A Unix Shell / Signals](https://indradhanush.github.io/blog/writing-a-unix-shell-part-3/)
 * [Writing A Shell In C](https://brennan.io/2015/01/16/write-a-shell-in-c/)
 
 ## 🏫 42 École | 42 São Paulo
