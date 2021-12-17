@@ -6,7 +6,7 @@
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 15:45:03 by fbafica           #+#    #+#             */
-/*   Updated: 2021/12/15 19:56:35 by fbafica          ###   ########.fr       */
+/*   Updated: 2021/12/17 19:01:11 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static void	add_space(char **input, int index)
 	free(scnd_half);
 }
 
-static int	inside_quotes(char *input, int index)
+static int	is_inside_quotes(char *input, int index)
 {
 	char	*tmp;
 	int		check;
@@ -58,7 +58,7 @@ void	space_handler(char **input)
 		j = 0;
 		while (set[j] != '\0')
 		{
-			if (!inside_quotes(*input, i) && (((*input)[i - 1] != ' ' && \
+			if (!is_inside_quotes(*input, i) && (((*input)[i - 1] != ' ' && \
 			(*input)[i] == set[j]) || ((*input)[i + 1] != ' ' \
 			&& (*input)[i + 1] != '\0' && (*input)[i] == set[j])))
 			{

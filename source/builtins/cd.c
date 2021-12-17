@@ -6,7 +6,7 @@
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/11 15:45:00 by fbafica           #+#    #+#             */
-/*   Updated: 2021/12/07 13:58:20 by fbafica          ###   ########.fr       */
+/*   Updated: 2021/12/17 18:55:36 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ int	cd(char **commands)
 	char	*value;
 	char	*curr_dir;
 
+	error_status = 1;
 	if (get_tokens_len(commands) > 2)
 	{
 		ft_putstr_fd("cd: too many arguments\n", 2);
@@ -36,7 +37,7 @@ int	cd(char **commands)
 	handle_old_pwd();
 	if (!ft_strcmp(commands[1], "~"))
 		error_status = chdir(search_a_key(g_minishell.env_var, "HOME"));
-	else
+	else if (ft_strcmp(commands[1], ""))
 		error_status = chdir(commands[1]);
 	if (error_status != 0)
 		error_status = 1;

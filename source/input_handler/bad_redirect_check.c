@@ -6,11 +6,24 @@
 /*   By: fbafica <fbafica@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/21 23:07:28 by fbafica           #+#    #+#             */
-/*   Updated: 2021/12/14 01:07:35 by fbafica          ###   ########.fr       */
+/*   Updated: 2021/12/17 19:04:32 by fbafica          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+static int	is_inside_quotes(char *input, int index)
+{
+	char	*tmp;
+	int		check;
+
+	tmp = ft_substr(input, 0, index);
+	check = quotes_check(tmp);
+	free(tmp);
+	if (!check)
+		return (1);
+	return (0);
+}
 
 static int	find_redirect_charact(char *input)
 {
@@ -37,17 +50,19 @@ static int	find_redirect_charact(char *input)
 int	bad_redirect_check(char *input)
 {
 	int	position;
+	int	qt;
 
 	position = find_redirect_charact(input);
 	while (position > 0)
 	{
-		if (input[position] == '>' && input[position + 1] == '<')
+		qt = is_inside_quotes(input, position);
+		if (!qt && input[position] == '>' && input[position + 1] == '<')
 			return (0);
-		else if (input[position] == '<' && input[position + 1] == '>')
+		else if (!qt && input[position] == '<' && input[position + 1] == '>')
 			return (0);
-		else if (input[position] == '>' && input[position + 1] == '|')
+		else if (!qt && input[position] == '>' && input[position + 1] == '|')
 			return (0);
-		else if (input[position] == '<' && input[position + 1] == '|')
+		else if (!qt && input[position] == '<' && input[position + 1] == '|')
 			return (0);
 		position = find_redirect_charact(input + position);
 	}
