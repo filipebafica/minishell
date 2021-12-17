@@ -1,5 +1,6 @@
 # minishell
 A shell program in C
+![shell_demo_AdobeCreativeCloudExpress](https://user-images.githubusercontent.com/31427890/146617384-d5535d7b-31de-4cab-8397-a74347855587.gif)
 
 ## 🗂 Table of Contents
 * [About](#-about)
