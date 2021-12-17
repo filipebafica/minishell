@@ -1,5 +1,5 @@
 # minishell
-A shell program in C
+A shell program in C.
 
 ![shell_demo](https://user-images.githubusercontent.com/31427890/146617819-24591d5a-5099-4cdb-8cad-6efa2743fe47.gif)
 
